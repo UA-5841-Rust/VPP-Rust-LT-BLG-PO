@@ -1,26 +1,26 @@
-# Local bench setup
+# Local Bench Setup
 
-Here you can find the way you need to configure your environment and which configuration files use to run the bench.
+This guide explains how to configure your environment and use the provided configuration files to run the local test bench.
 
-## To initialize the environment:
+## Environment Initialization
 
 1.  **Stand up the topology:**
     ```bash
-    # Make sure to clean it up using `teardown_topology.sh` and run script below again if you get some error here
+    # Note: If you encounter errors, clean up using ./teardown_topology.sh first, then retry.
     sudo ./setup_topology.sh
     ```
 
-2. **Copy VPP configuration:**
+2.  **Copy the VPP configuration:**
     ```bash
     sudo cp ./vpp-bench.conf /path/to/vpp/
     sudo cp ./vpp-bench.cli /path/to/vpp/
     ```
-    > Please don't forget to change the path `exec /path/to/vpp-bench.cli` in `vpp-bench.conf` configuration file
+    > **Note:** Ensure that the `exec` path in the `vpp-bench.conf` file accurately points to your local `vpp-bench.cli` file.
 
 3.  **Build VPP:**
     ```bash
-    # Make sure you are into /path/to/vpp dir :-)
-    # Specify path to `network_parser` lib
+    # Navigate to the VPP source directory
+    # Specify the absolute path to the network_parser library
     make build-release VPP_EXTRA_CMAKE_ARGS="-DNETWORK_PARSER_DIR=/path/to/network_parser"
     ```
 
@@ -29,25 +29,25 @@ Here you can find the way you need to configure your environment and which confi
     sudo build-root/install-vpp-native/vpp/bin/vpp -c vpp-bench.conf 
     ```
 
-Talking about our current bench topology we set up above:
+### Topology Overview
 
-* Two `netns` connected through VPP running in the root `netns`
-* Each `veth` pair has one end in a namespace and one end left in the root netns for VPP's `af_packet` host-interfaces to bind to.
+The local test bench topology consists of:
+*   Two isolated network namespaces (`ns-left` and `ns-right`) connected through VPP running in the root namespace.
+*   Two `veth` pairs. Each pair has one endpoint inside a namespace and the other in the root namespace, bound to VPP via `af_packet` host interfaces.
 
-The way it looks like:
-
+**Topology Diagram:**
 ```plaintext
    ns-left --veth-left----vpp-left--[ VPP ]--vpp-right----veth-right-- ns-right
            10.10.1.2/24  10.10.1.1/24       10.10.2.1/24  10.10.2.2/24
 ```
 
-* `vpp-left`/`vpp-right` get no kernel IP — VPP is the only L3 participant on those addresses.
+*   **Note:** The `vpp-left` and `vpp-right` host interfaces do not have kernel IP addresses assigned. VPP is the sole L3 forwarding participant on those endpoints.
 
 ---
 
 ## Verification and Baseline
 
-Once VPP is running, verify the bench before executing load tests.
+Once VPP is running, verify the bench before executing any load tests.
 
 ### 1. Zero-Load Baseline
 
@@ -66,8 +66,8 @@ sudo vppctl show hardware-interfaces
 **What "zero load" looks like:**
 
 *   **`show run` (cycles/vector):** 
-    With the interface up but completely idle, the worker thread polls the interface (~15.4M loops/sec), but 0 vectors are processed. The `rust-classify` node shows exactly 0 calls and 0 vectors, meaning 0 cycles are spent processing.
-    ```plaintext
+    With the interface up but completely idle, the worker thread polls the interfaces (~15.4M loops/sec), but 0 vectors are processed. The `rust-classify` node shows exactly 0 calls and 0 vectors, meaning 0 cycles are spent processing.
+    ```text
     Thread 1 vpp_wk_0 (lcore 2)
     Time 28.6, 10.000000 sec internal node vector rate 0.00 loops/sec 15442789.69
       vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
@@ -76,13 +76,13 @@ sudo vppctl show hardware-interfaces
 
 *   **`show errors` (all at zero):** 
     All application-level traffic counters for our custom node remain strictly at **zero**. No packets were unexpectedly forwarded or dropped.
-    ```plaintext
+    ```text
        Count                  Node                              Reason               Severity 
     ```
 
 *   **`show hardware-interfaces` (counters):** 
     The hardware interfaces reflect a completely idle network. RX and TX packet counts remain static, and the `af_packet` ring buffers show full availability with no pending blocks or drops (e.g., 5120 frames ready in the RX queue).
-    ```plaintext
+    ```text
                  Name                Idx   Link  Hardware
     host-vpp-left                      1     up   host-vpp-left
       RX Queues:
@@ -102,7 +102,7 @@ sudo vppctl show hardware-interfaces
 
 ### 2. Functional Sanity Check
 
-Sanity check the bench with a small, manual amount of traffic first to confirm that packets are actually reaching and passing through the node. **Do not proceed to load generation until this is confirmed.**
+We perform a sanity check on the bench with a small, manual amount of traffic first to confirm that packets are actually reaching and passing through the node. **Do not proceed to load generation until this is confirmed.**
 
 ```bash
 # In namespace `ns-right` (sink):
@@ -112,7 +112,7 @@ sudo ip netns exec ns-right iperf3 -s
 sudo ip netns exec ns-left iperf3 -u -c 10.10.2.2 -b 100k -t 2 -l 1200
 ```
 
-Check VPP trace to validate FFI parsing:
+Check the VPP trace to validate FFI parsing:
 ```plaintext
 vpp# clear trace
 vpp# trace add af-packet-input 10
@@ -121,7 +121,7 @@ vpp# show trace
 ```
 
 **Trace Result (Valid UDP Packet):**
-```plaintext
+```text
 00:01:00:784649: af-packet-input
   af_packet: hw_if_index 2 rx-queue 0 next-index 11
 00:01:00:788085: rust-classify
@@ -130,4 +130,4 @@ vpp# show trace
   IP4: 12:d3:41:68:9b:14 -> 02:fe:05:ff:df:04
 ```
 
-This explicit trace output (`valid 1`, `error_code 0`) confirms that real UDP traffic is successfully reaching the `rust-classify` node, crossing the zero-copy FFI boundary, and being correctly parsed.
+This explicit trace output (`valid 1`, `error_code 0`) confirms that real UDP traffic is successfully reaching the `rust-classify` node, crossing the zero-copy FFI boundary without errors, and being correctly parsed.
