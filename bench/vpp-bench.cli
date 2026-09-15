@@ -1,0 +1,11 @@
+create host-interface name vpp-left
+create host-interface name vpp-right
+
+set interface ip address host-vpp-left 10.10.1.1/24
+set interface ip address host-vpp-right 10.10.2.1/24
+
+set interface state host-vpp-left up
+set interface state host-vpp-right up
+
+set interface feature host-vpp-left rust-classify arc device-input
+set interface feature host-vpp-right rust-classify arc device-input
