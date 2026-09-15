@@ -1,6 +1,7 @@
 #include <vlib/vlib.h>
 #include <vnet/vnet.h>
 #include <vnet/plugin/plugin.h>
+#include <vnet/ethernet/ethernet.h>
 #include "network_parser.h"
 
 #define foreach_rust_classify_error \
@@ -84,7 +85,7 @@ rust_classify_node_fn (vlib_main_t * vm,
 
             b0 = vlib_get_buffer (vm, bi0);
 
-            u8 * data = vlib_buffer_get_current (b0);
+            ethernet_header_t *en0 = vlib_buffer_get_current (b0);
             u32 len = b0->current_length;
 
             /*
@@ -94,29 +95,36 @@ rust_classify_node_fn (vlib_main_t * vm,
              * - Validation: vlib_buffer_get_current() and b0->current_length are guaranteed by VPP's memory manager. The Rust parser safely validates length boundaries before accessing protocol headers. No payload copies occur.
              */
 
-            ClassifyResult res = packet_classify(data, len);
-
-            if (res.is_valid) {
-                next0 = RUST_CLASSIFY_NEXT_FORWARD;
-                forwarded_ok++;
+            if (clib_net_to_host_u16 (en0->type) != ETHERNET_TYPE_IP4) { // skip for service packets
+                next0 = RUST_CLASSIFY_NEXT_FORWARD; 
             } else {
-                next0 = RUST_CLASSIFY_NEXT_DROP;
-                const u32 unsupported_protocol_error_code = 7; /* ParseError::UnsupportedProtocol */
-                if (res.error_code == unsupported_protocol_error_code) {
-                    unsupported_protocol++;
+                ClassifyResult res = packet_classify(
+                    (const uint8_t *) en0,
+                    len
+                );
+
+                if (res.is_valid) {
+                    next0 = RUST_CLASSIFY_NEXT_FORWARD;
+                    forwarded_ok++;
                 } else {
-                    malformed_packet++;
+                    next0 = RUST_CLASSIFY_NEXT_DROP;
+                    const u32 unsupported_protocol_error_code = 7; /* ParseError::UnsupportedProtocol */
+                    if (res.error_code == unsupported_protocol_error_code) {
+                        unsupported_protocol++;
+                    } else {
+                        malformed_packet++;
+                    }
                 }
-            }
 
             /*For Tracing*/
-            if (PREDICT_FALSE ((node->flags & VLIB_NODE_FLAG_TRACE) && (b0->flags & VLIB_BUFFER_IS_TRACED))) {
-                rust_classify_trace_t *t =
-                    vlib_add_trace (vm, node, b0, sizeof (*t));
-                t->is_valid = res.is_valid;
-                t->protocol = res.protocol;
-                t->dest_port = res.dest_port;
-                t->error_code = res.error_code;
+                if (PREDICT_FALSE ((node->flags & VLIB_NODE_FLAG_TRACE) && (b0->flags & VLIB_BUFFER_IS_TRACED))) {
+                    rust_classify_trace_t *t =
+                        vlib_add_trace (vm, node, b0, sizeof (*t));
+                    t->is_valid = res.is_valid;
+                    t->protocol = res.protocol;
+                    t->dest_port = res.dest_port;
+                    t->error_code = res.error_code;
+                }
             }
 
             vlib_validate_buffer_enqueue_x1 (vm, node, next_index,

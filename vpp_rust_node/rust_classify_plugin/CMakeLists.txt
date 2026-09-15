@@ -18,10 +18,12 @@ add_custom_target(rust_network_parser_build ALL
     COMMENT "Invoking Cargo to build the network_parser library (${CARGO_PROFILE})"
 )
 
+include_directories(${RUST_PROJ_DIR})
+
 add_vpp_plugin(rust_classify
     SOURCES rust_classify.c
     LINK_LIBRARIES ${RUST_LIB}
 )
 
 # Enforce build order: The Rust library must be built before the VPP plugin compiles.
-add_dependencies(rust_classify rust_network_parser_build)
+add_dependencies(rust_classify_plugin rust_network_parser_build)
