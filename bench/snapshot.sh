@@ -1,7 +1,7 @@
 #!/bin/bash
 # Description: Captures VPP metrics during load testing.
 
-set -e
+set -euo pipefail
 
 # Allow overriding paths via environment variables. 
 # Defaults to global 'vppctl' if not explicitly provided.
