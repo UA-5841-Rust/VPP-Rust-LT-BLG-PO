@@ -3,6 +3,7 @@
 #include <vnet/plugin/plugin.h>
 #include <vnet/ethernet/ethernet.h>
 #include "network_parser.h"
+#define PASSTHROUGH_MODE 0
 
 #define foreach_rust_classify_error \
 _(FORWARDED_OK, "Valid UDP packets forwarded") \
@@ -86,7 +87,6 @@ rust_classify_node_fn (vlib_main_t * vm,
             b0 = vlib_get_buffer (vm, bi0);
 
             ethernet_header_t *en0 = vlib_buffer_get_current (b0);
-            u32 len = b0->current_length;
 
             /*
              * UNSAFE BOUNDARY JUSTIFICATION
@@ -98,6 +98,13 @@ rust_classify_node_fn (vlib_main_t * vm,
             if (clib_net_to_host_u16 (en0->type) != ETHERNET_TYPE_IP4) { // skip for service packets
                 next0 = RUST_CLASSIFY_NEXT_FORWARD; 
             } else {
+#if PASSTHROUGH_MODE
+                next0 = RUST_CLASSIFY_NEXT_FORWARD;
+                forwarded_ok++;
+#else
+
+                u32 len = b0->current_length;
+
                 ClassifyResult res = packet_classify(
                     (const uint8_t *) en0,
                     len
@@ -125,6 +132,7 @@ rust_classify_node_fn (vlib_main_t * vm,
                     t->dest_port = res.dest_port;
                     t->error_code = res.error_code;
                 }
+#endif
             }
 
             vlib_validate_buffer_enqueue_x1 (vm, node, next_index,

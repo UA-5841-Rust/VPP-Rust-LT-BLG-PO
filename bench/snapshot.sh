@@ -8,6 +8,7 @@ set -euo pipefail
 VPPCTL_BIN="${VPPCTL:-vppctl}"
 CLI_SOCK="${VPP_SOCK:-/run/vpp/cli.sock}"
 
+
 # Resolve directory dynamically based on script location
 OUTPUT_DIR="$(dirname "$0")/results"
 mkdir -p "$OUTPUT_DIR"
