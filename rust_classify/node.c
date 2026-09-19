@@ -122,8 +122,9 @@ VLIB_NODE_FN (rust_classify_node)
 					n_left_to_next -= 1;
 
 					b0 = vlib_get_buffer (vm, bi0);
+					u8 passthrough0 = rust_classify_passthrough;
 
-					if (PREDICT_FALSE (rust_classify_passthrough))
+					if (PREDICT_FALSE (passthrough0))
 						{
 							vnet_feature_next (&next0, b0);
 							error_counts[RUST_CLASSIFY_ERROR_FORWARDED_OK] += 1;
@@ -168,7 +169,7 @@ VLIB_NODE_FN (rust_classify_node)
 							t->sw_if_index = vnet_buffer (b0)->sw_if_index[VLIB_RX];
 							t->next_index = next0;
 
-							if (PREDICT_FALSE (rust_classify_passthrough))
+							if (PREDICT_FALSE (passthrough0))
 								{
 									t->is_valid = 1; /* Mark as valid for trace clarity */
 									t->protocol = 0;

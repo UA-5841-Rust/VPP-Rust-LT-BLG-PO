@@ -8,7 +8,7 @@
 rust_classify_main_t rust_classify_main;
 
 /* Initialize passthrough to 0 (disabled by default).
- * This allows Part B to measure baseline vs pure-forwarding overhead. */
+ * This allows to measure baseline vs pure-forwarding overhead. */
 volatile u8 rust_classify_passthrough = 0;
 
 static clib_error_t *

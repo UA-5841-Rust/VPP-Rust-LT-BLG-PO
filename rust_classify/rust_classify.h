@@ -17,7 +17,7 @@ extern rust_classify_main_t rust_classify_main;
 extern vlib_node_registration_t rust_classify_node;
 
 /* Volatile flag toggled by the CLI to skip FFI calls.
- * Used in Part B to isolate the cost of the Rust packet_classify call. */
+ * Used to isolate the cost of the Rust packet_classify call. */
 extern volatile u8 rust_classify_passthrough;
 
 #endif /* __included_rust_classify_h__ */
