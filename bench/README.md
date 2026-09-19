@@ -53,6 +53,8 @@ Once VPP is running, verify the bench before executing any load tests.
 
 To record the idle state of the custom `rust-classify` node, we capture the baseline metrics while the interface is up but there is no active load. **This baseline is what every later measurement will be compared against.**
 
+> Note: Use the `vppctl` binary from the same VPP build as the running VPP (e.g. `build-root/install-vpp-native/vpp/bin/vppctl`), not the distro one — version mismatch segfaults on the binary API.
+
 ```bash
 sudo vppctl clear run
 sudo vppctl clear errors
@@ -131,3 +133,113 @@ vpp# show trace
 ```
 
 This explicit trace output (`valid 1`, `error_code 0`) confirms that real UDP traffic is successfully reaching the `rust-classify` node, crossing the zero-copy FFI boundary without errors, and being correctly parsed.
+
+---
+
+## Load Generation (How to Run the Tests)
+
+> **Important:** Run all commands from the **repository root** directory so that relative paths (`./bench/...` and `./flooder/...`) resolve correctly.
+
+All measurements are captured through `bench/scripts/snapshot_metrics.sh`. This script clears VPP counters, runs a single load-generator command, and saves a consistent snapshot into `bench/results/snapshot/<label>/`.
+
+First, export the exact path to your compiled VPP binary:
+```bash
+export VPPCTL_BIN="/path/to/vpp/build-root/install-vpp-native/vpp/bin/vppctl"
+```
+
+Build the custom flooder (used by several tests below):
+```bash
+# Run if you are at the repository root level.
+# Otherwise, just navigate directly to the flooder directory.
+cd flooder && cargo build --release
+```
+
+**Requirements before any run:**
+
+1. VPP is running with the bench config.
+2. A sink is listening in `ns-right` (open a dedicated terminal and keep it running):
+   ```bash
+   sudo ip netns exec ns-right iperf3 -s
+   ```
+3. **Flush the ARP caches after every VPP restart.** VPP generates a random MAC for its `af_packet` host interfaces at every start. Stale ARP entries in the namespaces will cause the kernel to send frames to the old MAC. VPP's `ethernet-input` will drop them (`l3 mac mismatch`), silently poisoning the test metrics.
+   ```bash
+   sudo ip netns exec ns-left ip neigh flush all
+   sudo ip netns exec ns-right ip neigh flush all
+   ```
+
+### 1. Load Execution (Scaling Tests)
+
+We measure VPP scaling behavior across custom paced rate limits and an unbounded saturation flood. We use 1 thread (`-T 1`) for paced traffic to ensure smooth packet delivery, and multiple threads (e.g., `-T 4`) for unbounded traffic to push the kernel to its absolute limits.
+
+**Example 1: Paced Load (Replace `<rate>` and `<label>` as needed)**
+```bash
+# iperf3 baseline
+sudo env VPPCTL_BIN="$VPPCTL_BIN" ./bench/scripts/snapshot_metrics.sh <label>_iperf -- \
+  ip netns exec ns-left iperf3 -u -c 10.10.2.2 -b <rate> -l 1448 -t 30 -J
+
+# flooder cross-check
+sudo env VPPCTL_BIN="$VPPCTL_BIN" ./bench/scripts/snapshot_metrics.sh <label>_flooder -- \
+  ip netns exec ns-left ./flooder/target/release/flooder -t 10.10.2.2:5201 -T 1 --rate <rate> -s 1448 -b 64 -d 30
+```
+
+**Example 2: Saturation Flood (Unbounded Ceiling)**
+```bash
+sudo env VPPCTL_BIN="$VPPCTL_BIN" ./bench/scripts/snapshot_metrics.sh ceiling_flooder -- \
+  ip netns exec ns-left ./flooder/target/release/flooder -t 10.10.2.2:5201 -T 4 --rate 0 -s 1448 -b 64 -d 30
+```
+
+### 2. Passthrough A/B (FFI Cost Isolation)
+
+To measure the raw overhead of the Rust classification call across the FFI boundary, toggle the node into pure forwarding mode and repeat your highest paced run and the ceiling run. 
+**Both runs must happen in the same VPP session** to avoid CPU frequency drift.
+
+```bash
+# 1. Bypass Rust logic
+sudo "$VPPCTL_BIN" rust-classify passthrough on
+
+# 2. Run the highest paced payload (e.g., 1G)
+sudo env VPPCTL_BIN="$VPPCTL_BIN" ./bench/scripts/snapshot_metrics.sh <label>_passthrough -- \
+  ip netns exec ns-left ./flooder/target/release/flooder -t 10.10.2.2:5201 -T 1 --rate 1G -s 1448 -b 64 -d 30
+
+# 3. Run the ceiling passthrough (Unbounded)
+sudo env VPPCTL_BIN="$VPPCTL_BIN" ./bench/scripts/snapshot_metrics.sh ceiling_passthrough -- \
+  ip netns exec ns-left ./flooder/target/release/flooder -t 10.10.2.2:5201 -T 4 --rate 0 -s 1448 -b 64 -d 30
+
+# 4. Restore normal classification
+sudo "$VPPCTL_BIN" rust-classify passthrough off
+```
+*Note: The FFI cost is calculated by subtracting the `Packet-Clocks` of the passthrough run from the normal run.*
+
+_Validity check:_ `ip4-lookup` / `ip4-rewrite` / `ethernet-input` Packet-Clocks must be within a few percent between the two runs. 
+Also note the passthrough run counts ALL frames in valid `udp packets` forwarded (including ARP), while the normal run counts only valid UDP — expect the passthrough counter to be a few packets higher.
+
+### 3. Inspecting Results
+
+Run these verification checks to validate data integrity before proceeding to analysis.
+
+**Check 1: Clean Forwarding (No Drops on Paced Runs)**
+Verify that all paced runs processed traffic perfectly without kernel or VPP-side drops.
+*(Note: Replace `<paced_label_pattern>` with your actual directory pattern, intentionally excluding the `ceiling` runs which are expected to have drops).*
+
+(If your pattern matches `passthrough` runs, note that the VPP counter is expected to be a few packets higher, because passthrough counts ARP frames too. Apply the "perfect match" rule only to non-passthrough directories.)
+
+```bash
+# For iperf3 runs (Expected: "lost_percent": 0)
+grep -H "lost_percent" bench/results/snapshot/<paced_label_pattern>/loadgen_output.txt
+
+# For flooder runs (Expected: Total Packets perfectly matches VPP's valid udp packets)
+grep -H "Total Packets" bench/results/snapshot/<paced_label_pattern>/loadgen_output.txt
+grep -H "valid udp packets" bench/results/snapshot/<paced_label_pattern>/show_errors.txt
+```
+
+**Check 2: ARP Contamination**
+```bash
+grep -H "mac mismatch" bench/results/snapshot/*/show_errors.txt
+```
+*Expected:* Should return no results (or exactly `0`). If you see `l3 mac mismatch`, the ARP cache was not flushed prior to the run, which silently poisons the cross-check by dropping packets at `ethernet-input` while `rust-classify` still counts them, heavily skewing `Packet-Clocks`.
+
+**Check 3: Bottleneck Evidence (Ceiling Run)**
+```bash
+grep -H "Failed syscalls" bench/results/snapshot/*ceiling*/loadgen_output.txt
+```
+*Expected:* Massive loss in the unbounded run. Note that `Failed syscalls` (saturated sender socket / ENOBUFS) is a _minor_ contributor here — the bulk of the loss happens further along the pre-VPP path (`af_packet` RX ring on the VPP side), which is why VPP's counters fall far behind the flooder's `Total Packets` while VPP itself still drops nothing. This proves the bottleneck is the kernel-side networking stack, not VPP.
