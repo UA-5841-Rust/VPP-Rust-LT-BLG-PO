@@ -99,7 +99,10 @@ fn main() {
         (cap_pps / args.threads as u64).max(1)
     };
     let batch_interval = if per_thread_pps > 0 {
-        Duration::from_nanos(1_000_000_000 * args.batch_size as u64 / per_thread_pps)
+        let ns = (1_000_000_000u64 * args.batch_size as u64)
+            .checked_div(per_thread_pps)
+            .unwrap_or(0); // per_thread_pps > 0 guarantees no overflow path here
+        Duration::from_nanos(ns)
     } else {
         Duration::ZERO
     };
