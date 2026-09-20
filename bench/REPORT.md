@@ -107,7 +107,7 @@ Findings:
 
 1. **VPP never dropped a packet at any load** — `vector rates in == out`
    in every saturation run; the graph is not the limiter.
-2. **86–91% of offered traffic dies before VPP** — in the kernel path
+2. **85–88% of offered traffic dies before VPP** — in the kernel path
    feeding the af_packet RX ring (and, on the receiver side, in the sink
    socket buffer). The generator's `Failed syscalls` counter is a minor
    contributor (~1/s, ICMP rate-limited); the bulk is lost deeper in the
@@ -198,7 +198,7 @@ the Rust FFI call.
 
 **Evidence.**
 
-1. 86–91% of unbounded traffic never reaches VPP; VPP drops 0 at every
+1. 85–88% of unbounded traffic never reaches VPP; VPP drops 0 at every
    load level.
 2. FFI cost ≈ 50 clocks/packet → well under 1% of a worker core even
    at ceiling.
