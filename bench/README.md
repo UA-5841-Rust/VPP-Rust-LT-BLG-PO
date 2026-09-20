@@ -243,3 +243,31 @@ grep -H "mac mismatch" bench/results/snapshot/*/show_errors.txt
 grep -H "Failed syscalls" bench/results/snapshot/*ceiling*/loadgen_output.txt
 ```
 *Expected:* Massive loss in the unbounded run. Note that `Failed syscalls` (saturated sender socket / ENOBUFS) is a _minor_ contributor here — the bulk of the loss happens further along the pre-VPP path (`af_packet` RX ring on the VPP side), which is why VPP's counters fall far behind the flooder's `Total Packets` while VPP itself still drops nothing. This proves the bottleneck is the kernel-side networking stack, not VPP.
+
+### 4. Profiling (FlameGraph)
+
+While the bench is saturated, capture a CPU profile of the running VPP and render it as a flame graph (used as bottleneck evidence in `REPORT.md`):
+
+> **Note:** This guide uses the FlameGraph scripts instead of Hotspot
+> because Hotspot's GUI is unavailable on my WSL2.
+
+```bash
+# one-time: flame graph rendering scripts
+git clone https://github.com/brendangregg/FlameGraph /tmp/FlameGraph
+
+# terminal A: record for 45 s — it just waits, do NOT wait for it to finish
+sudo perf record -F 99 -g -p "$(pidof vpp)" -- sleep 45
+
+# terminal B, immediately (while A is waiting): unbounded ceiling run
+sudo ip netns exec ns-left ./flooder/target/release/flooder \
+  -t 10.10.2.2:5201 -T 4 --rate 0 -s 1448 -b 64 -d 30
+
+# after both finish (perf.data is in the directory where perf record ran):
+sudo perf report --stdio 2>/dev/null | sudo tee bench/perf_report_w2_ceiling.txt > /dev/null
+sudo perf script | /tmp/FlameGraph/stackcollapse-perf.pl \
+  | /tmp/FlameGraph/flamegraph.pl > bench/vpp_ceiling_flamegraph.svg
+```
+
+(`perf.data` is a raw binary profile — keep it out of the repository; only the rendered report and SVG are committed.)
+
+Open the SVG in a browser: the dominant stack is `dispatch_pending_node` → the `af_packet` TX path (`sendto` → kernel softirq on the peer veth) — the kernel-side cost that sets the bench ceiling.
