@@ -38,24 +38,6 @@ check_clean_state() {
 	fi
 }
 
-# Disables TX/RX checksumming and segmentation offloads on a veth peer.
-# af_packet reads raw bytes from the interface; if the kernel performs
-# offloading, VPP will see malformed frames.
-disable_offloads() {
-	local iface=$1 netns=$2
-
-	# If netns is empty, we are in the root namespace.
-	if [[ -z "$netns" ]]; then
-		if ! ethtool -K "$iface" tx off rx off gso off gro off tso off 2>/dev/null; then
-			echo "WARNING: Failed to disable offloads on ${iface} in root ns."
-		fi
-	else
-		if ! ip netns exec "$netns" ethtool -K "$iface" tx off rx off gso off gro off tso off 2>/dev/null; then
-			echo "WARNING: Failed to disable offloads on ${iface} in ${netns}."
-		fi
-	fi
-}
-
 # Creates one namespace, its veth pair, addressing, and offload tuning.
 # args: netns_name ns_side_if root_side_if ns_addr_cidr gateway_ip
 create_side() {
@@ -75,9 +57,11 @@ create_side() {
 	ip netns exec "$netns" ip addr add "$addr" dev "$ns_if"
 	ip netns exec "$netns" ip route add default via "$gw" dev "$ns_if"
 
-	# Call with the correct namespace context.
-	# disable_offloads "$root_if" ""
-	# disable_offloads "$ns_if" "$netns"
+	# NOTE: kernel checksum/segmentation offloads are intentionally left ON.
+	# Disabling them (ethtool -K tx/rx/gso/gro/tso off) broke forwarding on
+	# this platform — and it is unnecessary here: VPP's af_packet interface
+	# has cksum-gso-enabled in its features, so it negotiates offloads with
+	# the kernel itself (see show hardware-interfaces output).
 }
 
 main() {
