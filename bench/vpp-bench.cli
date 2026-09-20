@@ -1,5 +1,9 @@
-create host-interface name vpp-left
-create host-interface name vpp-right
+# previous configuration
+# create host-interface name vpp-left
+# create host-interface name vpp-right
+
+create host-interface name vpp-left num-rx-queues 2
+create host-interface name vpp-right num-rx-queues 2
 
 set interface ip address host-vpp-left 10.10.1.1/24
 set interface ip address host-vpp-right 10.10.2.1/24
@@ -9,3 +13,9 @@ set interface state host-vpp-right up
 
 set interface feature host-vpp-left rust-classify arc device-input
 set interface feature host-vpp-right rust-classify arc device-input
+
+# strict placement of workers (round-robin did the same, but it's stricter)
+set interface rx-placement host-vpp-left queue 0 worker 0
+set interface rx-placement host-vpp-left queue 1 worker 1
+set interface rx-placement host-vpp-right queue 0 worker 0
+set interface rx-placement host-vpp-right queue 1 worker 1
