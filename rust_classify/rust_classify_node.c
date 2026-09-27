@@ -102,7 +102,8 @@ VLIB_NODE_FN (rust_classify_node) (vlib_main_t *vm,
             else
             {
                 next0 = RUST_CLASSIFY_NEXT_DROP;
-                if (res.error_code == 1 || res.error_code == 6)
+                // Код 7 - UnsupportedProtocol
+                if (res.error_code == 7)
                 {
                     b0->error =
                         node->errors[RUST_CLASSIFY_ERROR_UNSUPPORTED_PROTOCOL];
