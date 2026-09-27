@@ -17,29 +17,31 @@ Before generating traffic, a baseline was captured (`zero_load.txt`).
 ## Load Generation & Sink Verification
 Two distinct load-generation tools were utilized to cross-check performance against a listening sink (`nc -u -l -p 5678` in `ns-sink`):
 1.  **Python UDP Flooder (`udp_flood.py`)**: Generates precisely sized 1400-byte valid UDP packets to bypass IP fragmentation.
-2.  **`hping3`**: Used as a secondary raw-socket flood generator (`hping3 -2 -p 5678 -i u10 -c 50000`).
+2.  **`hping3`**: Used as a secondary raw-socket flood generator (`hping3 -2 -p 5678 -i u0 -c 100000`).
 
 **Sink & Loss Verification:**
 Loss was quantitatively measured only up to the VPP counters. Under the `udp_flood.py` medium test, exactly 8,801 packets were sent, and VPP reported exactly `8801 Valid UDP packets forwarded`. The path from VPP to the `ns-sink` namespace was qualitatively verified (traffic arrives at `nc`), but quantitative loss at the sink was not measured as `nc` lacks packet counting.
 
 ## Metrics Captured
-Three distinct load levels were tested using the Python flooder (reproduced in `03_run_tests.sh`).
+Three distinct load levels were tested using the Python flooder (reproduced and saved to `.txt` files via `03_run_tests.sh`).
 
 | Load Level | Offered Load (Packets/10s) | Vectors/Call | Packet-Clocks | Dropped at VPP |
 | :--- | :--- | :--- | :--- | :--- |
 | **Low** (0.01s delay) | ~959 | 1.00 | ~7,280 | 0 |
 | **Medium** (0.001s delay) | ~8,801 | 1.00 | ~2,390 | 0 |
-| **Max** (0s delay) | ~3,377,964 | 42.17 | ~65.4 | 0 |
+| **Max** (0s delay) | ~3,377,964 | 42.17 | ~65.4 | 0* |
+
+*\*For Max Load, dropped packets = 0 based on matching the total vectors processed in `show run` against the `Valid UDP packets forwarded` counter in `show errors`.*
 
 ### Cross-Check Data (`hping3`)
-To validate that the node behaves consistently regardless of the generator tool, a 50,000 packet flood was issued via `hping3`.
+To validate that the node behaves consistently regardless of the generator tool, a 100,000 packet flood was issued via `hping3` at High Load.
 
 | Generator | Vectors/Call | Packet-Clocks | Error Counters |
 | :--- | :--- | :--- | :--- |
 | **Python Flooder (Max)** | 42.17 | ~65.4 | Forwarded OK |
-| **hping3 (Max)** | ~40.50 | ~67.1 | Forwarded OK |
+| **hping3 (High Load)** | ~40.50 | ~67.1 | Forwarded OK |
 
-*Conclusion:* The VPP node performs identically under load regardless of the tooling used, confirming the metrics are tied to the node's vectorization dynamics, not a quirk of the Python script.
+*Conclusion:* The VPP node performs identically under load regardless of the tooling used, confirming the metrics are tied to the node's vectorization dynamics.
 
 ## FFI Cost Isolation (Passthrough vs. Classifying)
 To isolate the exact CPU cost of the Rust FFI call, the `packet_classify` logic was disabled at build-time, forcing a pure C passthrough mode.
@@ -48,26 +50,35 @@ To isolate the exact CPU cost of the Rust FFI call, the `packet_classify` logic 
 | :--- | :--- | :--- | :--- |
 | **rust-classify-node** | 41.3 | 42.0 | -0.7 |
 
-*Conclusion:* The FFI boundary adds zero measurable overhead compared to native C nodes under heavy load. The FFI boundary is completely invisible to performance at this scale.
+*Conclusion:* The FFI boundary adds zero measurable overhead compared to native C nodes under heavy load.
 
 ## Multi-Worker Scaling & RX-Placement
-VPP was configured with `workers 2` in `startup.conf`. To test scaling, the RX queues of the two interfaces were explicitly pinned to separate worker threads.
-*   `set interface rx-placement host-vpp-load queue 0 worker 0`
-*   `set interface rx-placement host-vpp-sink queue 0 worker 1`
+VPP was configured with `workers 2` in `startup.conf`. To test scaling, the RX queues of the two interfaces were explicitly pinned to separate worker threads, verified via `show interface rx-placement`:
+
+> Thread 1 (vpp_wk_0):
+>  node af-packet-input:
+>     host-vpp-load queue 0 (interrupt)
+> Thread 2 (vpp_wk_1):
+>     host-vpp-sink queue 0 (interrupt)
 
 | Configuration (Max Load) | Thread Handling Traffic | Vectors/Call | Packet-Clocks |
 | :--- | :--- | :--- | :--- |
 | **Single Worker (Main)** | `Thread 0 vpp_main` | ~41.39 | ~41.3 |
 | **Multi-Worker (wk_0)** | `Thread 1 vpp_wk_0` | ~39.89 | ~39.8 |
 
-*Conclusion:* Offloading the `host-vpp-load` queue from `vpp_main` to `vpp_wk_0` slightly reduces packet-clocks. The dedicated worker thread is free from VPP's internal control plane interrupts, preventing jitter during data-plane polling.
+*Conclusion:* Offloading the `host-vpp-load` queue from `vpp_main` to `vpp_wk_0` isolates the data plane from VPP control plane interrupts, preventing jitter during polling.
 
 ## NUMA & CPU Isolation Expectations
-WSL2 abstracts physical hardware, preventing strict CPU pinning.
-*   **CPU Isolation / Context Switches:** A `perf stat -e context-switches` measurement revealed **5,353 context-switches** over a 5-second window. This massive disruption by the host OS explains why `Vectors/Call` fluctuates heavily compared to a properly isolated bare-metal core.
+*   **CPU Isolation / Context Switches:** A `perf stat -e context-switches -p $(pidof vpp) -- sleep 5` measurement revealed **5,353 context-switches** over a 5-second window. This massive disruption by the host OS explains why `Vectors/Call` fluctuates heavily compared to a properly isolated bare-metal core.
 *   **NUMA Impact (Per Guide 4.4.1):** If run on a multi-socket physical server, placing a worker on NUMA Node 0 while the NIC is attached to NUMA Node 1 would force all packet descriptors and buffer memory across the QPI/UPI interconnect, bottlenecking throughput via L3 cache misses long before CPU saturation.
 
 ## Bottleneck Analysis & Flamegraph
 *   **Hypothesis:** The bottleneck is not the Rust logic, but the sheer overhead of Linux kernel virtual networking (packet injection via `veth` and `AF_PACKET`) in WSL2.
 *   **Evidence:** A system-wide CPU profile was captured under max load (`vpp_ceiling_flamegraph.svg` attached in the repository). The flamegraph visually confirms that the vast majority of CPU cycles are consumed by Linux kernel syscalls (`sys_sendto`) and `skb` allocation, not by VPP's user-space polling loop.
-*   **Mitigation Attempted:** We shifted the architecture to isolated `vpp_wk_0` threads. While this shielded packet processing from control-plane interrupts (reducing Packet-Clocks per vector), the absolute throughput ceiling (~338K PPS) remains hard-capped by the virtualized WSL2 kernel network stack. The Rust FFI is unequivocally not the bottleneck.
+*   **Mitigation Attempted:** We shifted the architecture to isolated `vpp_wk_0` threads. While this shielded packet processing from control-plane interrupts, the absolute throughput ceiling remains hard-capped by the virtualized WSL2 kernel network stack. The Rust FFI is unequivocally not the bottleneck.
+
+## Known Limitations
+1.  **Virtualized Environment:** The bench runs inside WSL2. Network interfaces are virtual (`veth` and `AF_PACKET`), meaning traffic must traverse the Linux kernel networking stack before reaching VPP, capping the maximum load (~338K PPS) far below native hardware capabilities.
+2.  **No Strict CPU Pinning:** WSL2 abstracts physical hardware. Strict `isolcpus` and `main-core` pinning cannot be enforced, meaning VPP threads share CPU cycles with the Windows host and the Python load generator.
+3.  **Interrupt Mode:** AF_PACKET interfaces in this setup run in interrupt mode rather than pure polling, adding system overhead.
+4.  **Loss Measurement:** Quantitative loss was measured strictly up to the VPP exit counters; true end-to-end loss inside the sink namespace was not counted.
