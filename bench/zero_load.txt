@@ -1,0 +1,100 @@
+> show run
+Thread 0 vpp_main (lcore 0)
+Time 2.0, 10.000000 sec internal node vector rate 0.00 loops/sec 1534646.96
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends      Packet-Clocks   Vectors/Call  
+dpdk-process                   "any wait"                0               0               1          1.26e4            0.00
+fib-walk                       "any wait"                0               0               1          1.40e4            0.00
+ip4-full-reassembly-expire-wal "any wait"                0               0              40          7.74e3            0.00
+ip6-full-reassembly-expire-wal "any wait"                0               0              40          1.23e4            0.00
+ip6-mld-process                "any wait"                0               0               2          2.58e3            0.00
+ip6-ra-process                 "any wait"                0               0               2          6.97e3            0.00
+sasc-session-expiry            "suspended"               0               0               2          1.47e4            0.00
+    events pending, 
+sflow-process-samples          "any wait"                0               0               2          7.99e3            0.00
+unix-cli-new-session           "any wait"                0               0               7          6.21e3            0.00
+unix-cli-process-1              "running"                3               0               6          4.75e5            0.00
+---------------
+Thread 1 vpp_wk_0 (lcore 1)
+Time 2.0, 10.000000 sec internal node vector rate 1.00 loops/sec 2682392.18
+  vector rates in 4.9689e-1, out 0.0000e0, drop 4.9689e-1, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends      Packet-Clocks   Vectors/Call  
+af-packet-input               interrupt wa               1               1               0          2.12e7            1.00
+drop                             active                  1               1               0          1.12e4            1.00
+error-drop                       active                  1               1               0          2.80e6            1.00
+rust-classify-node               active                  1               1               0          1.86e4            1.00
+---------------
+Thread 2 vpp_wk_1 (lcore 2)
+Time 2.0, 10.000000 sec internal node vector rate 0.00 loops/sec 3133912.64
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends      Packet-Clocks   Vectors/Call  
+> show errors
+   Count                  Node                              Reason               Severity 
+         2         rust-classify-node           Malformed or too short packets     error  
+         1          af-packet-input                    timed out block             error  
+         1          af-packet-input                  total received block          error  
+> show hardware-interfaces
+              Name                Idx   Link  Hardware
+host-vpp-load                      1     up   host-vpp-load
+  Link speed: unknown
+  RX Queues:
+    queue thread         mode      
+    0     vpp_wk_0 (1)   interrupt 
+  TX Queues:
+    TX Hash: [name: hash-eth-l34 priority: 50 description: Hash ethernet L34 headers]
+    queue shared thread(s)      
+    0     yes    0-2
+  Ethernet address 02:00:00:00:01:01
+  Linux PACKET socket interface v3
+  FEATURES:
+    qdisc-bpass-enabled
+    cksum-gso-enabled
+  Host Interface Offload:
+    creation time:
+     rx checksum
+     tx checksum
+     tcp segmentation offload
+     generic segmentation offload
+    now:
+     rx checksum
+     tx checksum
+     tcp segmentation offload
+     generic segmentation offload
+  RX Queue 0:
+    block size:65536 nr:160  frame size:2048 nr:5120 next block:1
+  TX Queue 0:
+    block size:69206016 nr:1  frame size:67584 nr:1024 next frame:0
+    available:1024 request:0 sending:0 wrong:0 total:1024
+host-vpp-sink                      2     up   host-vpp-sink
+  Link speed: unknown
+  RX Queues:
+    queue thread         mode      
+    0     vpp_wk_1 (2)   interrupt 
+  TX Queues:
+    TX Hash: [name: hash-eth-l34 priority: 50 description: Hash ethernet L34 headers]
+    queue shared thread(s)      
+    0     yes    0-2
+  Ethernet address 02:00:00:00:02:01
+  Linux PACKET socket interface v3
+  FEATURES:
+    qdisc-bpass-enabled
+    cksum-gso-enabled
+  Host Interface Offload:
+    creation time:
+     rx checksum
+     tx checksum
+     tcp segmentation offload
+     generic segmentation offload
+    now:
+     rx checksum
+     tx checksum
+     tcp segmentation offload
+     generic segmentation offload
+  RX Queue 0:
+    block size:65536 nr:160  frame size:2048 nr:5120 next block:0
+  TX Queue 0:
+    block size:69206016 nr:1  frame size:67584 nr:1024 next frame:0
+    available:1024 request:0 sending:0 wrong:0 total:1024
+local0                             0    down  local0
+  Link speed: unknown
+  local
