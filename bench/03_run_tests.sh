@@ -1,12 +1,8 @@
 #!/bin/bash
 set -e
 
-sudo apt-get install -y hping3 netcat-openbsd >/dev/null 2>&1
-
 echo "--- 1. ZERO-LOAD BASELINE ---"
-vppctl clear run
-vppctl clear errors
-vppctl clear hardware-interfaces
+vppctl clear run && vppctl clear errors && vppctl clear hardware-interfaces
 sleep 2
 echo "> show run" > zero_load.txt
 vppctl show run >> zero_load.txt
@@ -20,18 +16,24 @@ echo -e "\n--- 2. STARTING SINK LISTENER ---"
 sudo ip netns exec ns-sink nc -u -l -p 5678 > /dev/null &
 SINK_PID=$!
 
-echo -e "\n--- 3. LOAD TEST: Python UDP Flooder (Low Load) ---"
+echo -e "\n--- 3. LOAD TEST: Python UDP (Low Load - 0.01s delay) ---"
+vppctl clear run && vppctl clear errors && vppctl clear hardware-interfaces
+sudo ip netns exec ns-load ./udp_flood.py 10.10.2.2 5678 10 0.01
+vppctl show run && vppctl show errors
+
+echo -e "\n--- 4. LOAD TEST: Python UDP (Medium Load - 0.001s delay) ---"
 vppctl clear run && vppctl clear errors && vppctl clear hardware-interfaces
 sudo ip netns exec ns-load ./udp_flood.py 10.10.2.2 5678 10 0.001
-vppctl show run
-vppctl show errors
-vppctl show hardware-interfaces
+vppctl show run && vppctl show errors
 
-echo -e "\n--- 4. LOAD TEST: hping3 (Second Generator - Max Load) ---"
+echo -e "\n--- 5. LOAD TEST: Python UDP (Max Load - 0s delay) ---"
 vppctl clear run && vppctl clear errors && vppctl clear hardware-interfaces
-sudo ip netns exec ns-load hping3 -2 -p 5678 --flood -c 100000 10.10.2.2
-vppctl show run
-vppctl show errors
-vppctl show hardware-interfaces
+sudo ip netns exec ns-load ./udp_flood.py 10.10.2.2 5678 10 0
+vppctl show run && vppctl show errors
+
+echo -e "\n--- 6. CROSS-CHECK: hping3 (Max Load) ---"
+vppctl clear run && vppctl clear errors && vppctl clear hardware-interfaces
+sudo ip netns exec ns-load hping3 -2 -p 5678 -i u10 -c 50000 10.10.2.2
+vppctl show run && vppctl show errors && vppctl show hardware-interfaces
 
 sudo kill $SINK_PID 2>/dev/null
