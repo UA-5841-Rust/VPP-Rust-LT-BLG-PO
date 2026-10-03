@@ -1,0 +1,12 @@
+{
+  "sent_packets": 1999991,
+  "send_errors": 0,
+  "seconds": 10.000035432000004,
+  "achieved_pps": 199998.39136569962,
+  "achieved_payload_bps": 819193411.0339056,
+  "requested_pps": 200000,
+  "payload_bytes": 512,
+  "flows": 8,
+  "received_packets": 1999991,
+  "loss_percent": 0.0
+}

@@ -1,0 +1,47 @@
+host-rc-a-vpp
+host-rc-b-vpp
+
+
+
+
+
+
+
+Thread 1 (vpp_wk_0):
+ node af-packet-input:
+    host-rc-a-vpp queue 0 (interrupt)
+    host-rc-b-vpp queue 0 (interrupt)
+
+
+
+External UDP reached Rust and the sink; trace verified.
+
+
+
+
+Captured mitigation-default-1
+
+
+
+
+Captured mitigation-buffer-1
+
+
+
+
+Captured mitigation-default-2
+
+
+
+
+Captured mitigation-buffer-2
+
+
+
+
+Captured mitigation-default-3
+
+
+
+
+Captured mitigation-buffer-3

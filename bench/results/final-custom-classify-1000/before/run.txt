@@ -1,0 +1,13 @@
+Thread 0 vpp_main (lcore 0)
+Time 0.0, 10 sec internal node vector rate 0.00 loops/sec 1502293.65
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+ip4-full-reassembly-expire-wal "any wait"                0               0               1          4.41e3            0.00
+ip6-full-reassembly-expire-wal "any wait"                0               0               1          1.04e4            0.00
+unix-cli-new-session           "any wait"                0               0               2          1.56e3            0.00
+unix-cli-process-0              "running"                2               0               4          1.98e5            0.00
+---------------
+Thread 1 vpp_wk_0 (lcore 2)
+Time 0.0, 10 sec internal node vector rate 0.00 loops/sec 23736912.20
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  

@@ -1,0 +1,17 @@
+Thread 0 vpp_main (lcore 0)
+Time 0.0, 10 sec internal node vector rate 0.00 loops/sec 1604772.52
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+fib-walk                       "any wait"                0               0               1          8.70e3            0.00
+ip4-sv-reassembly-expire-walk  "any wait"                0               0               1          5.81e3            0.00
+ip6-mld-process                "any wait"                0               0               1          3.41e3            0.00
+ip6-ra-process                 "any wait"                0               0               1          2.19e3            0.00
+ip6-sv-reassembly-expire-walk  "any wait"                0               0               1          2.00e4            0.00
+statseg-collector-process      "suspended"               0               0               1          1.14e6            0.00
+unix-cli-new-session           "any wait"                0               0               2          2.56e3            0.00
+unix-cli-process-0              "running"                2               0               4          2.35e5            0.00
+---------------
+Thread 1 vpp_wk_0 (lcore 2)
+Time 0.0, 10 sec internal node vector rate 0.00 loops/sec 15226169.24
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  

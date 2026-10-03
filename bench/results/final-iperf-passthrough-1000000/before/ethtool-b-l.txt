@@ -1,0 +1,11 @@
+Channel parameters for rc-b-vpp:
+Pre-set maximums:
+RX:		16
+TX:		16
+Other:		n/a
+Combined:	n/a
+Current hardware settings:
+RX:		1
+TX:		1
+Other:		n/a
+Combined:	n/a

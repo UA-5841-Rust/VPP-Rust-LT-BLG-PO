@@ -1,0 +1,2149 @@
+Limiting display to 50 packets. To display more specify max.
+------------------- Start of thread 0 vpp_main -------------------
+No packets in trace buffer
+------------------- Start of thread 1 vpp_wk_0 -------------------
+Packet 1
+
+00:00:00:802761: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 0:
+      address 0x76ea795ff000 version 2 seq_num 1 pkt_num 0
+    tpacket3_hdr:
+      status 0x1 len 42 snaplen 42 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x23d8f2d8 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x00 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 0 csum_offset 0
+00:00:00:811416: ethernet-input
+  ARP: 72:b8:43:77:d5:29 -> ff:ff:ff:ff:ff:ff
+00:00:00:811425: l2-input
+  l2-input: sw_if_index 1 dst ff:ff:ff:ff:ff:ff src 72:b8:43:77:d5:29 [l2-output ]
+00:00:00:811427: l2-output
+  l2-output: sw_if_index 2 dst ff:ff:ff:ff:ff:ff src 72:b8:43:77:d5:29 data 08 06 00 01 08 00 06 04 00 01 72 b8
+00:00:00:811428: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x00180005
+  ARP: 72:b8:43:77:d5:29 -> ff:ff:ff:ff:ff:ff
+  request, type ethernet/IP4, address size 6/4
+  72:b8:43:77:d5:29/10.44.0.1 -> 00:00:00:00:00:00/10.44.0.2
+00:00:00:811431: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 52 snaplen 52 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x00 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 0 csum_offset 0
+    buffer 0x97fd7:
+      current data 0, length 42, buffer-pool 0, ref-count 1, trace handle 0x1000000
+      l2-hdr-offset 0 l3-hdr-offset 14 
+    ARP: 72:b8:43:77:d5:29 -> ff:ff:ff:ff:ff:ff
+    request, type ethernet/IP4, address size 6/4
+    72:b8:43:77:d5:29/10.44.0.1 -> 00:00:00:00:00:00/10.44.0.2
+
+Packet 2
+
+00:00:00:811458: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 0:
+      address 0x76ea749ff000 version 2 seq_num 1 pkt_num 0
+    tpacket3_hdr:
+      status 0x1 len 42 snaplen 42 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x23fd72da vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x00 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 0 csum_offset 0
+00:00:00:815409: ethernet-input
+  ARP: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:815411: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:815413: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 06 00 01 08 00 06 04 00 02 62 a3
+00:00:00:815415: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x00180005
+  ARP: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  reply, type ethernet/IP4, address size 6/4
+  62:a3:42:6d:44:75/10.44.0.2 -> 72:b8:43:77:d5:29/10.44.0.1
+00:00:00:815417: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 52 snaplen 52 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x00 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 0 csum_offset 0
+    buffer 0x95ad7:
+      current data 0, length 42, buffer-pool 0, ref-count 1, trace handle 0x1000001
+      l2-hdr-offset 0 l3-hdr-offset 14 
+    ARP: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    reply, type ethernet/IP4, address size 6/4
+    62:a3:42:6d:44:75/10.44.0.2 -> 72:b8:43:77:d5:29/10.44.0.1
+
+Packet 3
+
+00:00:00:815440: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 1:
+      address 0x76ea7960f000 version 2 seq_num 2 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 74 snaplen 74 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x243a4946 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:819364: ethernet-input
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+00:00:00:819366: l2-input
+  l2-input: sw_if_index 1 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 [l2-output ]
+00:00:00:819367: l2-output
+  l2-output: sw_if_index 2 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 data 08 00 45 00 00 3c f6 ae 40 00 40 06
+00:00:00:819368: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  TCP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 60, checksum 0x2fb3 dscp CS0 ecn NON_ECN
+    fragment id 0xf6ae, flags DONT_FRAGMENT
+  TCP: 41274 -> 5201
+    seq. 0xbc7dca13 ack 0x00000000
+    flags 0x02 SYN, tcp header: 40 bytes
+    window 64240, checksum 0x1489
+    options:
+      mss 1460, window scale -1007390016, timestamp -1007390016, echo/reflected timestamp, sack permitted
+00:00:00:819370: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 84 snaplen 84 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 74
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x95ab2:
+      current data 0, length 74, buffer-pool 0, ref-count 1, trace handle 0x1000002
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    TCP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 60, checksum 0x2fb3 dscp CS0 ecn NON_ECN
+      fragment id 0xf6ae, flags DONT_FRAGMENT
+    TCP: 41274 -> 5201
+      seq. 0xbc7dca13 ack 0x00000000
+      flags 0x02 SYN, tcp header: 40 bytes
+      window 64240, checksum 0x1489
+      options:
+        mss 1460, window scale -1007390016, timestamp -1007390016, echo/reflected timestamp, sack permitted
+
+Packet 4
+
+00:00:00:819404: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 1:
+      address 0x76ea74a0f000 version 2 seq_num 2 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 74 snaplen 74 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x2476e126 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:823366: ethernet-input
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:823367: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:823368: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 00 00 3c 00 00 40 00 40 06
+00:00:00:823368: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x015c0005
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  TCP: 10.44.0.2 -> 10.44.0.1
+    tos 0x00, ttl 64, length 60, checksum 0x2662 dscp CS0 ecn NON_ECN
+    fragment id 0x0000, flags DONT_FRAGMENT
+  TCP: 5201 -> 41274
+    seq. 0x3c85eef3 ack 0xbc7dca14
+    flags 0x12 SYN ACK, tcp header: 40 bytes
+    window 65160, checksum 0x1489
+    options:
+      mss 1460, window scale -1007390016, timestamp -1007390016, echo/reflected timestamp, sack permitted
+00:00:00:823369: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 84 snaplen 84 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 74
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x95a8d:
+      current data 0, length 74, buffer-pool 0, ref-count 1, trace handle 0x1000003
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    TCP: 10.44.0.2 -> 10.44.0.1
+      tos 0x00, ttl 64, length 60, checksum 0x2662 dscp CS0 ecn NON_ECN
+      fragment id 0x0000, flags DONT_FRAGMENT
+    TCP: 5201 -> 41274
+      seq. 0x3c85eef3 ack 0xbc7dca14
+      flags 0x12 SYN ACK, tcp header: 40 bytes
+      window 65160, checksum 0x1489
+      options:
+        mss 1460, window scale -1007390016, timestamp -1007390016, echo/reflected timestamp, sack permitted
+
+Packet 5
+
+00:00:00:823407: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 2:
+      address 0x76ea7961f000 version 2 seq_num 3 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 66 snaplen 66 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x24b41764 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:827353: ethernet-input
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+00:00:00:827356: l2-input
+  l2-input: sw_if_index 1 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 [l2-output ]
+00:00:00:827356: l2-output
+  l2-output: sw_if_index 2 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 data 08 00 45 00 00 34 f6 af 40 00 40 06
+00:00:00:827357: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  TCP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 52, checksum 0x2fba dscp CS0 ecn NON_ECN
+    fragment id 0xf6af, flags DONT_FRAGMENT
+  TCP: 41274 -> 5201
+    seq. 0xbc7dca14 ack 0x3c85eef4
+    flags 0x10 ACK, tcp header: 32 bytes
+    window 502, checksum 0x1481
+    
+00:00:00:827359: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 76 snaplen 76 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x95a68:
+      current data 0, length 66, buffer-pool 0, ref-count 1, trace handle 0x1000004
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    TCP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 52, checksum 0x2fba dscp CS0 ecn NON_ECN
+      fragment id 0xf6af, flags DONT_FRAGMENT
+    TCP: 41274 -> 5201
+      seq. 0xbc7dca14 ack 0x3c85eef4
+      flags 0x10 ACK, tcp header: 32 bytes
+      window 502, checksum 0x1481
+      
+
+Packet 6
+
+00:00:00:823407: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 2:
+      address 0x76ea7961f000 version 2 seq_num 3 pkt_num 1
+    tpacket3_hdr:
+      status 0x9 len 103 snaplen 103 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x24b52434 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:827353: ethernet-input
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+00:00:00:827356: l2-input
+  l2-input: sw_if_index 1 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 [l2-output ]
+00:00:00:827356: l2-output
+  l2-output: sw_if_index 2 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 data 08 00 45 00 00 59 f6 b0 40 00 40 06
+00:00:00:827357: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  TCP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 89, checksum 0x2f94 dscp CS0 ecn NON_ECN
+    fragment id 0xf6b0, flags DONT_FRAGMENT
+  TCP: 41274 -> 5201
+    seq. 0xbc7dca14 ack 0x3c85eef4
+    flags 0x18 PSH ACK, tcp header: 32 bytes
+    window 502, checksum 0x14a6
+    
+00:00:00:827359: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 113 snaplen 113 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x95a43:
+      current data 0, length 103, buffer-pool 0, ref-count 1, trace handle 0x1000005
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    TCP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 89, checksum 0x2f94 dscp CS0 ecn NON_ECN
+      fragment id 0xf6b0, flags DONT_FRAGMENT
+    TCP: 41274 -> 5201
+      seq. 0xbc7dca14 ack 0x3c85eef4
+      flags 0x18 PSH ACK, tcp header: 32 bytes
+      window 502, checksum 0x14a6
+      
+
+Packet 7
+
+00:00:00:827408: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 2:
+      address 0x76ea74a1f000 version 2 seq_num 3 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 66 snaplen 66 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x24f13d46 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:831359: ethernet-input
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:831360: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:831361: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 00 00 34 aa 64 40 00 40 06
+00:00:00:831361: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x015c0005
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  TCP: 10.44.0.2 -> 10.44.0.1
+    tos 0x00, ttl 64, length 52, checksum 0x7c05 dscp CS0 ecn NON_ECN
+    fragment id 0xaa64, flags DONT_FRAGMENT
+  TCP: 5201 -> 41274
+    seq. 0x3c85eef4 ack 0xbc7dca39
+    flags 0x10 ACK, tcp header: 32 bytes
+    window 509, checksum 0x1481
+    
+00:00:00:831362: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 76 snaplen 76 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x95a1e:
+      current data 0, length 66, buffer-pool 0, ref-count 1, trace handle 0x1000006
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    TCP: 10.44.0.2 -> 10.44.0.1
+      tos 0x00, ttl 64, length 52, checksum 0x7c05 dscp CS0 ecn NON_ECN
+      fragment id 0xaa64, flags DONT_FRAGMENT
+    TCP: 5201 -> 41274
+      seq. 0x3c85eef4 ack 0xbc7dca39
+      flags 0x10 ACK, tcp header: 32 bytes
+      window 509, checksum 0x1481
+      
+
+Packet 8
+
+00:00:00:827408: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 2:
+      address 0x76ea74a1f000 version 2 seq_num 3 pkt_num 1
+    tpacket3_hdr:
+      status 0x9 len 67 snaplen 67 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x24f1ca78 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:831359: ethernet-input
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:831360: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:831361: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 00 00 35 aa 65 40 00 40 06
+00:00:00:831361: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x015c0005
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  TCP: 10.44.0.2 -> 10.44.0.1
+    tos 0x00, ttl 64, length 53, checksum 0x7c03 dscp CS0 ecn NON_ECN
+    fragment id 0xaa65, flags DONT_FRAGMENT
+  TCP: 5201 -> 41274
+    seq. 0x3c85eef4 ack 0xbc7dca39
+    flags 0x18 PSH ACK, tcp header: 32 bytes
+    window 509, checksum 0x1482
+    
+00:00:00:831362: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 77 snaplen 77 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x959f9:
+      current data 0, length 67, buffer-pool 0, ref-count 1, trace handle 0x1000007
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    TCP: 10.44.0.2 -> 10.44.0.1
+      tos 0x00, ttl 64, length 53, checksum 0x7c03 dscp CS0 ecn NON_ECN
+      fragment id 0xaa65, flags DONT_FRAGMENT
+    TCP: 5201 -> 41274
+      seq. 0x3c85eef4 ack 0xbc7dca39
+      flags 0x18 PSH ACK, tcp header: 32 bytes
+      window 509, checksum 0x1482
+      
+
+Packet 9
+
+00:00:00:831396: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 3:
+      address 0x76ea7962f000 version 2 seq_num 4 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 66 snaplen 66 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x252e31d9 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:835346: ethernet-input
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+00:00:00:835348: l2-input
+  l2-input: sw_if_index 1 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 [l2-output ]
+00:00:00:835348: l2-output
+  l2-output: sw_if_index 2 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 data 08 00 45 00 00 34 f6 b1 40 00 40 06
+00:00:00:835349: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  TCP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 52, checksum 0x2fb8 dscp CS0 ecn NON_ECN
+    fragment id 0xf6b1, flags DONT_FRAGMENT
+  TCP: 41274 -> 5201
+    seq. 0xbc7dca39 ack 0x3c85eef5
+    flags 0x10 ACK, tcp header: 32 bytes
+    window 502, checksum 0x1481
+    
+00:00:00:835350: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 76 snaplen 76 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x959d4:
+      current data 0, length 66, buffer-pool 0, ref-count 1, trace handle 0x1000008
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    TCP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 52, checksum 0x2fb8 dscp CS0 ecn NON_ECN
+      fragment id 0xf6b1, flags DONT_FRAGMENT
+    TCP: 41274 -> 5201
+      seq. 0xbc7dca39 ack 0x3c85eef5
+      flags 0x10 ACK, tcp header: 32 bytes
+      window 502, checksum 0x1481
+      
+
+Packet 10
+
+00:00:00:831396: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 3:
+      address 0x76ea7962f000 version 2 seq_num 4 pkt_num 1
+    tpacket3_hdr:
+      status 0x9 len 70 snaplen 70 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x252e9e8a vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:835346: ethernet-input
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+00:00:00:835348: l2-input
+  l2-input: sw_if_index 1 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 [l2-output ]
+00:00:00:835348: l2-output
+  l2-output: sw_if_index 2 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 data 08 00 45 00 00 38 f6 b2 40 00 40 06
+00:00:00:835349: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  TCP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 56, checksum 0x2fb3 dscp CS0 ecn NON_ECN
+    fragment id 0xf6b2, flags DONT_FRAGMENT
+  TCP: 41274 -> 5201
+    seq. 0xbc7dca39 ack 0x3c85eef5
+    flags 0x18 PSH ACK, tcp header: 32 bytes
+    window 502, checksum 0x1485
+    
+00:00:00:835350: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 80 snaplen 80 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x959af:
+      current data 0, length 70, buffer-pool 0, ref-count 1, trace handle 0x1000009
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    TCP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 56, checksum 0x2fb3 dscp CS0 ecn NON_ECN
+      fragment id 0xf6b2, flags DONT_FRAGMENT
+    TCP: 41274 -> 5201
+      seq. 0xbc7dca39 ack 0x3c85eef5
+      flags 0x18 PSH ACK, tcp header: 32 bytes
+      window 502, checksum 0x1485
+      
+
+Packet 11
+
+00:00:00:831396: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 3:
+      address 0x76ea7962f000 version 2 seq_num 4 pkt_num 2
+    tpacket3_hdr:
+      status 0x9 len 205 snaplen 205 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x252ea97e vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:835346: ethernet-input
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+00:00:00:835348: l2-input
+  l2-input: sw_if_index 1 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 [l2-output ]
+00:00:00:835348: l2-output
+  l2-output: sw_if_index 2 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 data 08 00 45 00 00 bf f6 b3 40 00 40 06
+00:00:00:835349: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  TCP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 191, checksum 0x2f2b dscp CS0 ecn NON_ECN
+    fragment id 0xf6b3, flags DONT_FRAGMENT
+  TCP: 41274 -> 5201
+    seq. 0xbc7dca3d ack 0x3c85eef5
+    flags 0x18 PSH ACK, tcp header: 32 bytes
+    window 502, checksum 0x150c
+    
+00:00:00:835350: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 215 snaplen 215 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x9598a:
+      current data 0, length 205, buffer-pool 0, ref-count 1, trace handle 0x100000a
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    TCP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 191, checksum 0x2f2b dscp CS0 ecn NON_ECN
+      fragment id 0xf6b3, flags DONT_FRAGMENT
+    TCP: 41274 -> 5201
+      seq. 0xbc7dca3d ack 0x3c85eef5
+      flags 0x18 PSH ACK, tcp header: 32 bytes
+      window 502, checksum 0x150c
+      
+
+Packet 12
+
+00:00:00:835388: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 3:
+      address 0x76ea74a2f000 version 2 seq_num 4 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 66 snaplen 66 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x256ba320 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:839305: ethernet-input
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:839306: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:839306: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 00 00 34 aa 66 40 00 40 06
+00:00:00:839307: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x015c0005
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  TCP: 10.44.0.2 -> 10.44.0.1
+    tos 0x00, ttl 64, length 52, checksum 0x7c03 dscp CS0 ecn NON_ECN
+    fragment id 0xaa66, flags DONT_FRAGMENT
+  TCP: 5201 -> 41274
+    seq. 0x3c85eef5 ack 0xbc7dcac8
+    flags 0x10 ACK, tcp header: 32 bytes
+    window 508, checksum 0x1481
+    
+00:00:00:839308: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 76 snaplen 76 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x95965:
+      current data 0, length 66, buffer-pool 0, ref-count 1, trace handle 0x100000b
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    TCP: 10.44.0.2 -> 10.44.0.1
+      tos 0x00, ttl 64, length 52, checksum 0x7c03 dscp CS0 ecn NON_ECN
+      fragment id 0xaa66, flags DONT_FRAGMENT
+    TCP: 5201 -> 41274
+      seq. 0x3c85eef5 ack 0xbc7dcac8
+      flags 0x10 ACK, tcp header: 32 bytes
+      window 508, checksum 0x1481
+      
+
+Packet 13
+
+00:00:00:835388: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 3:
+      address 0x76ea74a2f000 version 2 seq_num 4 pkt_num 1
+    tpacket3_hdr:
+      status 0x9 len 67 snaplen 67 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x256c3c22 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:839305: ethernet-input
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:839306: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:839306: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 00 00 35 aa 67 40 00 40 06
+00:00:00:839307: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x015c0005
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  TCP: 10.44.0.2 -> 10.44.0.1
+    tos 0x00, ttl 64, length 53, checksum 0x7c01 dscp CS0 ecn NON_ECN
+    fragment id 0xaa67, flags DONT_FRAGMENT
+  TCP: 5201 -> 41274
+    seq. 0x3c85eef5 ack 0xbc7dcac8
+    flags 0x18 PSH ACK, tcp header: 32 bytes
+    window 508, checksum 0x1482
+    
+00:00:00:839308: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 77 snaplen 77 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x95940:
+      current data 0, length 67, buffer-pool 0, ref-count 1, trace handle 0x100000c
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    TCP: 10.44.0.2 -> 10.44.0.1
+      tos 0x00, ttl 64, length 53, checksum 0x7c01 dscp CS0 ecn NON_ECN
+      fragment id 0xaa67, flags DONT_FRAGMENT
+    TCP: 5201 -> 41274
+      seq. 0x3c85eef5 ack 0xbc7dcac8
+      flags 0x18 PSH ACK, tcp header: 32 bytes
+      window 508, checksum 0x1482
+      
+
+Packet 14
+
+00:00:00:839335: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 4:
+      address 0x76ea7963f000 version 2 seq_num 5 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 46 snaplen 46 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x25a824af vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:00:843319: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:00:843330: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 32, checksum 0x54b0 dscp CS0 ecn NON_ECN
+    fragment id 0xd1c2, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 12, checksum 0x1478
+00:00:00:843331: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 56 snaplen 56 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9591b:
+      current data 0, length 46, buffer-pool 0, ref-count 1, trace handle 0x100000d
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 32, checksum 0x54b0 dscp CS0 ecn NON_ECN
+      fragment id 0xd1c2, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 12, checksum 0x1478
+
+Packet 15
+
+00:00:00:843374: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 4:
+      address 0x76ea74a3f000 version 2 seq_num 5 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 46 snaplen 46 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x25e5f665 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:00:847311: ethernet-input
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:847313: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:847314: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 00 00 20 2b d7 40 00 40 11
+00:00:00:847314: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x015c0005
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  UDP: 10.44.0.2 -> 10.44.0.1
+    tos 0x00, ttl 64, length 32, checksum 0xfa9b dscp CS0 ecn NON_ECN
+    fragment id 0x2bd7, flags DONT_FRAGMENT
+  UDP: 5201 -> 57960
+    length 12, checksum 0x1478
+00:00:00:847315: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 56 snaplen 56 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x958f6:
+      current data 0, length 46, buffer-pool 0, ref-count 1, trace handle 0x100000e
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    UDP: 10.44.0.2 -> 10.44.0.1
+      tos 0x00, ttl 64, length 32, checksum 0xfa9b dscp CS0 ecn NON_ECN
+      fragment id 0x2bd7, flags DONT_FRAGMENT
+    UDP: 5201 -> 57960
+      length 12, checksum 0x1478
+
+Packet 16
+
+00:00:00:843374: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 4:
+      address 0x76ea74a3f000 version 2 seq_num 5 pkt_num 1
+    tpacket3_hdr:
+      status 0x9 len 67 snaplen 67 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x25e78ca4 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:847311: ethernet-input
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:847313: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:847314: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 00 00 35 aa 68 40 00 40 06
+00:00:00:847314: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x015c0005
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  TCP: 10.44.0.2 -> 10.44.0.1
+    tos 0x00, ttl 64, length 53, checksum 0x7c00 dscp CS0 ecn NON_ECN
+    fragment id 0xaa68, flags DONT_FRAGMENT
+  TCP: 5201 -> 41274
+    seq. 0x3c85eef6 ack 0xbc7dcac8
+    flags 0x18 PSH ACK, tcp header: 32 bytes
+    window 508, checksum 0x1482
+    
+00:00:00:847315: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 77 snaplen 77 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x958d1:
+      current data 0, length 67, buffer-pool 0, ref-count 1, trace handle 0x100000f
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    TCP: 10.44.0.2 -> 10.44.0.1
+      tos 0x00, ttl 64, length 53, checksum 0x7c00 dscp CS0 ecn NON_ECN
+      fragment id 0xaa68, flags DONT_FRAGMENT
+    TCP: 5201 -> 41274
+      seq. 0x3c85eef6 ack 0xbc7dcac8
+      flags 0x18 PSH ACK, tcp header: 32 bytes
+      window 508, checksum 0x1482
+      
+
+Packet 17
+
+00:00:00:843374: af-packet-input
+  af_packet: hw_if_index 2 rx-queue 0 next-index 4
+    block 4:
+      address 0x76ea74a3f000 version 2 seq_num 5 pkt_num 2
+    tpacket3_hdr:
+      status 0x9 len 67 snaplen 67 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x25e79f30 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:847311: ethernet-input
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+00:00:00:847313: l2-input
+  l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
+00:00:00:847314: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 00 00 35 aa 69 40 00 40 06
+00:00:00:847314: host-rc-a-vpp-output
+  host-rc-a-vpp flags 0x015c0005
+  IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+  TCP: 10.44.0.2 -> 10.44.0.1
+    tos 0x00, ttl 64, length 53, checksum 0x7bff dscp CS0 ecn NON_ECN
+    fragment id 0xaa69, flags DONT_FRAGMENT
+  TCP: 5201 -> 41274
+    seq. 0x3c85eef7 ack 0xbc7dcac8
+    flags 0x18 PSH ACK, tcp header: 32 bytes
+    window 508, checksum 0x1482
+    
+00:00:00:847315: host-rc-a-vpp-tx
+  af_packet: hw_if_index 1 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 77 snaplen 77 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x958ac:
+      current data 0, length 67, buffer-pool 0, ref-count 1, trace handle 0x1000010
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
+    TCP: 10.44.0.2 -> 10.44.0.1
+      tos 0x00, ttl 64, length 53, checksum 0x7bff dscp CS0 ecn NON_ECN
+      fragment id 0xaa69, flags DONT_FRAGMENT
+    TCP: 5201 -> 41274
+      seq. 0x3c85eef7 ack 0xbc7dcac8
+      flags 0x18 PSH ACK, tcp header: 32 bytes
+      window 508, checksum 0x1482
+      
+
+Packet 18
+
+00:00:00:847350: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 5:
+      address 0x76ea7964f000 version 2 seq_num 6 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 66 snaplen 66 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x2624347f vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 16
+00:00:00:851307: ethernet-input
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+00:00:00:851309: l2-input
+  l2-input: sw_if_index 1 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 [l2-output ]
+00:00:00:851310: l2-output
+  l2-output: sw_if_index 2 dst 62:a3:42:6d:44:75 src 72:b8:43:77:d5:29 data 08 00 45 00 00 34 f6 b4 40 00 40 06
+00:00:00:851312: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  TCP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 52, checksum 0x2fb5 dscp CS0 ecn NON_ECN
+    fragment id 0xf6b4, flags DONT_FRAGMENT
+  TCP: 41274 -> 5201
+    seq. 0xbc7dcac8 ack 0x3c85eef8
+    flags 0x10 ACK, tcp header: 32 bytes
+    window 502, checksum 0x1481
+    
+00:00:00:851313: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 76 snaplen 76 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 66
+      gso_size 0 csum_start 34 csum_offset 16
+    buffer 0x95887:
+      current data 0, length 66, buffer-pool 0, ref-count 1, trace handle 0x1000011
+      ip4 offload-tcp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    TCP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 52, checksum 0x2fb5 dscp CS0 ecn NON_ECN
+      fragment id 0xf6b4, flags DONT_FRAGMENT
+    TCP: 41274 -> 5201
+      seq. 0xbc7dcac8 ack 0x3c85eef8
+      flags 0x10 ACK, tcp header: 32 bytes
+      window 502, checksum 0x1481
+      
+
+Packet 19
+
+00:00:00:847350: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 5:
+      address 0x76ea7964f000 version 2 seq_num 6 pkt_num 1
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x2625aea0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:00:851304: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:00:851312: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52b3 dscp CS0 ecn NON_ECN
+    fragment id 0xd1c3, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:00:851313: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95862:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000012
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52b3 dscp CS0 ecn NON_ECN
+      fragment id 0xd1c3, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 20
+
+00:00:00:881549: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 6:
+      address 0x76ea7965f000 version 2 seq_num 7 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x28971337 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:00:891241: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:00:891245: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52b2 dscp CS0 ecn NON_ECN
+    fragment id 0xd1c4, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:00:891247: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9583d:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000013
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52b2 dscp CS0 ecn NON_ECN
+      fragment id 0xd1c4, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 21
+
+00:00:00:921453: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 7:
+      address 0x76ea7966f000 version 2 seq_num 8 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x2b08ab02 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:00:931180: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:00:931185: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52b1 dscp CS0 ecn NON_ECN
+    fragment id 0xd1c5, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:00:931187: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95818:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000014
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52b1 dscp CS0 ecn NON_ECN
+      fragment id 0xd1c5, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 22
+
+00:00:00:961354: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 8:
+      address 0x76ea7967f000 version 2 seq_num 9 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x2d7a27cf vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:00:971130: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:00:971135: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52b0 dscp CS0 ecn NON_ECN
+    fragment id 0xd1c6, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:00:971138: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x957f3:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000015
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52b0 dscp CS0 ecn NON_ECN
+      fragment id 0xd1c6, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 23
+
+00:00:01:011413: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 9:
+      address 0x76ea7968f000 version 2 seq_num 10 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x2feb9152 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:019035: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:019040: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52af dscp CS0 ecn NON_ECN
+    fragment id 0xd1c7, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:019043: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x957ce:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000016
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52af dscp CS0 ecn NON_ECN
+      fragment id 0xd1c7, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 24
+
+00:00:01:049262: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 10:
+      address 0x76ea7969f000 version 2 seq_num 11 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x325de9ae vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:058975: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:058980: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52ae dscp CS0 ecn NON_ECN
+    fragment id 0xd1c8, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:058982: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x957a9:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000017
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52ae dscp CS0 ecn NON_ECN
+      fragment id 0xd1c8, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 25
+
+00:00:01:089208: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 11:
+      address 0x76ea796af000 version 2 seq_num 12 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x34ced411 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:098899: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:098904: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52ad dscp CS0 ecn NON_ECN
+    fragment id 0xd1c9, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:098906: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95784:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000018
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52ad dscp CS0 ecn NON_ECN
+      fragment id 0xd1c9, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 26
+
+00:00:01:129112: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 12:
+      address 0x76ea796bf000 version 2 seq_num 13 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x37413a0f vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:138832: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:138837: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52ac dscp CS0 ecn NON_ECN
+    fragment id 0xd1ca, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:138840: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9575f:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000019
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52ac dscp CS0 ecn NON_ECN
+      fragment id 0xd1ca, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 27
+
+00:00:01:169120: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 13:
+      address 0x76ea796cf000 version 2 seq_num 14 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7c nsec 0x39b25b62 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:178806: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:178813: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52ab dscp CS0 ecn NON_ECN
+    fragment id 0xd1cb, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:178815: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9573a:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100001a
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52ab dscp CS0 ecn NON_ECN
+      fragment id 0xd1cb, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 28
+
+00:00:01:209036: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 14:
+      address 0x76ea796df000 version 2 seq_num 15 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x89777e vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:218752: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:218770: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52aa dscp CS0 ecn NON_ECN
+    fragment id 0xd1cc, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:218773: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95715:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100001b
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52aa dscp CS0 ecn NON_ECN
+      fragment id 0xd1cc, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 29
+
+00:00:01:249018: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 15:
+      address 0x76ea796ef000 version 2 seq_num 16 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x2fb5003 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:258568: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:258574: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a9 dscp CS0 ecn NON_ECN
+    fragment id 0xd1cd, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:258576: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x956f0:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100001c
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a9 dscp CS0 ecn NON_ECN
+      fragment id 0xd1cd, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 30
+
+00:00:01:288687: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 16:
+      address 0x76ea796ff000 version 2 seq_num 17 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x56c5b3f vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:298396: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:298401: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a8 dscp CS0 ecn NON_ECN
+    fragment id 0xd1ce, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:298403: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x956cb:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100001d
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a8 dscp CS0 ecn NON_ECN
+      fragment id 0xd1ce, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 31
+
+00:00:01:338601: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 17:
+      address 0x76ea7970f000 version 2 seq_num 18 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x7de1f43 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:346240: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:346246: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a7 dscp CS0 ecn NON_ECN
+    fragment id 0xd1cf, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:346248: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x956a6:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100001e
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a7 dscp CS0 ecn NON_ECN
+      fragment id 0xd1cf, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 32
+
+00:00:01:376377: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 18:
+      address 0x76ea7971f000 version 2 seq_num 19 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0xa4f5b72 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:386099: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:386104: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a6 dscp CS0 ecn NON_ECN
+    fragment id 0xd1d0, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:386106: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95681:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100001f
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a6 dscp CS0 ecn NON_ECN
+      fragment id 0xd1d0, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 33
+
+00:00:01:416157: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 19:
+      address 0x76ea7972f000 version 2 seq_num 20 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0xcc134f1 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:425943: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:425947: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a5 dscp CS0 ecn NON_ECN
+    fragment id 0xd1d1, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:425948: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9565c:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000020
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a5 dscp CS0 ecn NON_ECN
+      fragment id 0xd1d1, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 34
+
+00:00:01:456041: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 20:
+      address 0x76ea7973f000 version 2 seq_num 21 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0xf32d1f5 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:465822: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:465826: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a4 dscp CS0 ecn NON_ECN
+    fragment id 0xd1d2, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:465828: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95637:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000021
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a4 dscp CS0 ecn NON_ECN
+      fragment id 0xd1d2, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 35
+
+00:00:01:495971: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 21:
+      address 0x76ea7974f000 version 2 seq_num 22 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x11a46a06 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:505669: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:505674: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a3 dscp CS0 ecn NON_ECN
+    fragment id 0xd1d3, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:505677: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95612:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000022
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a3 dscp CS0 ecn NON_ECN
+      fragment id 0xd1d3, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 36
+
+00:00:01:535805: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 22:
+      address 0x76ea7975f000 version 2 seq_num 23 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x141639cc vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:545528: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:545533: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a2 dscp CS0 ecn NON_ECN
+    fragment id 0xd1d4, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:545535: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x955ed:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000023
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a2 dscp CS0 ecn NON_ECN
+      fragment id 0xd1d4, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 37
+
+00:00:01:575683: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 23:
+      address 0x76ea7976f000 version 2 seq_num 24 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x1687b806 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:585383: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:585388: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a1 dscp CS0 ecn NON_ECN
+    fragment id 0xd1d5, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:585390: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x955c8:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000024
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a1 dscp CS0 ecn NON_ECN
+      fragment id 0xd1d5, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 38
+
+00:00:01:615440: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 24:
+      address 0x76ea7977f000 version 2 seq_num 25 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x18f952d3 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:625233: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:625238: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x52a0 dscp CS0 ecn NON_ECN
+    fragment id 0xd1d6, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:625239: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x955a3:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000025
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x52a0 dscp CS0 ecn NON_ECN
+      fragment id 0xd1d6, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 39
+
+00:00:01:665477: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 25:
+      address 0x76ea7978f000 version 2 seq_num 26 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x1b6aae24 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:673062: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:673067: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x529f dscp CS0 ecn NON_ECN
+    fragment id 0xd1d7, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:673068: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9557e:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000026
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x529f dscp CS0 ecn NON_ECN
+      fragment id 0xd1d7, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 40
+
+00:00:01:703210: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 26:
+      address 0x76ea7979f000 version 2 seq_num 27 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x1ddc9e70 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:712946: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:712952: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x529e dscp CS0 ecn NON_ECN
+    fragment id 0xd1d8, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:712954: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95559:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000027
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x529e dscp CS0 ecn NON_ECN
+      fragment id 0xd1d8, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 41
+
+00:00:01:743177: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 27:
+      address 0x76ea797af000 version 2 seq_num 28 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x204e48d2 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:752787: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:752794: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x529d dscp CS0 ecn NON_ECN
+    fragment id 0xd1d9, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:752796: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95534:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000028
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x529d dscp CS0 ecn NON_ECN
+      fragment id 0xd1d9, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 42
+
+00:00:01:782919: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 28:
+      address 0x76ea797bf000 version 2 seq_num 29 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x22bfaf44 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:792662: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:792668: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x529c dscp CS0 ecn NON_ECN
+    fragment id 0xd1da, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:792670: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9550f:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000029
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x529c dscp CS0 ecn NON_ECN
+      fragment id 0xd1da, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 43
+
+00:00:01:822796: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 29:
+      address 0x76ea797cf000 version 2 seq_num 30 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x2522019a vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:832510: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:832515: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x529b dscp CS0 ecn NON_ECN
+    fragment id 0xd1db, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:832517: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x954ea:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100002a
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x529b dscp CS0 ecn NON_ECN
+      fragment id 0xd1db, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 44
+
+00:00:01:862612: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 30:
+      address 0x76ea797df000 version 2 seq_num 31 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x27936f53 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:872350: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:872354: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x529a dscp CS0 ecn NON_ECN
+    fragment id 0xd1dc, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:872356: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x954c5:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100002b
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x529a dscp CS0 ecn NON_ECN
+      fragment id 0xd1dc, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 45
+
+00:00:01:902472: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 31:
+      address 0x76ea797ef000 version 2 seq_num 32 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x2a055601 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:912216: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:912221: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x5299 dscp CS0 ecn NON_ECN
+    fragment id 0xd1dd, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:912223: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x954a0:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100002c
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x5299 dscp CS0 ecn NON_ECN
+      fragment id 0xd1dd, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 46
+
+00:00:01:942324: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 32:
+      address 0x76ea797ff000 version 2 seq_num 33 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x2c773b03 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:952068: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:952072: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x5298 dscp CS0 ecn NON_ECN
+    fragment id 0xd1de, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:952073: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9547b:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100002d
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x5298 dscp CS0 ecn NON_ECN
+      fragment id 0xd1de, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 47
+
+00:00:01:982178: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 33:
+      address 0x76ea7980f000 version 2 seq_num 34 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x2ee971dc vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:01:991945: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:01:991949: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x5297 dscp CS0 ecn NON_ECN
+    fragment id 0xd1df, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:01:991950: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95456:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100002e
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x5297 dscp CS0 ecn NON_ECN
+      fragment id 0xd1df, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 48
+
+00:00:02:032041: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 34:
+      address 0x76ea7981f000 version 2 seq_num 35 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x315a1b84 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:02:039757: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:02:039761: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x5296 dscp CS0 ecn NON_ECN
+    fragment id 0xd1e0, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:02:039763: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x95431:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x100002f
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x5296 dscp CS0 ecn NON_ECN
+      fragment id 0xd1e0, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 49
+
+00:00:02:069908: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 35:
+      address 0x76ea7982f000 version 2 seq_num 36 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x33cbce54 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:02:079640: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:02:079645: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x5295 dscp CS0 ecn NON_ECN
+    fragment id 0xd1e1, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:02:079647: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x9540c:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000030
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x5295 dscp CS0 ecn NON_ECN
+      fragment id 0xd1e1, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Packet 50
+
+00:00:02:109800: af-packet-input
+  af_packet: hw_if_index 1 rx-queue 0 next-index 11
+    block 36:
+      address 0x76ea7983f000 version 2 seq_num 37 pkt_num 0
+    tpacket3_hdr:
+      status 0x9 len 554 snaplen 554 mac 92 net 106
+      sec 0x6ac13a7d nsec 0x363d944d vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 0
+      gso_size 0 csum_start 34 csum_offset 6
+00:00:02:119474: rust-classify-node
+  rust-classify: protocol 1 port 5201 valid 1 error 0 next 1 rx 1 chained 0 passthrough 0 tx 2
+00:00:02:119480: host-rc-b-vpp-output
+  host-rc-b-vpp flags 0x015c0005
+  IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+  UDP: 10.44.0.1 -> 10.44.0.2
+    tos 0x00, ttl 64, length 540, checksum 0x5294 dscp CS0 ecn NON_ECN
+    fragment id 0xd1e2, flags DONT_FRAGMENT
+  UDP: 57960 -> 5201
+    length 520, checksum 0x1674
+00:00:02:119482: host-rc-b-vpp-tx
+  af_packet: hw_if_index 2 tx-queue 0
+    tpacket3_hdr:
+      status 0x1 len 564 snaplen 564 mac 0 net 0
+      sec 0x0 nsec 0x0 vlan 0 vlan_tpid 0
+    vnet-hdr:
+      flags 0x01 gso_type 0x00 hdr_len 42
+      gso_size 0 csum_start 34 csum_offset 6
+    buffer 0x953e7:
+      current data 0, length 554, buffer-pool 0, ref-count 1, trace handle 0x1000031
+      ip4 offload-udp-cksum  l2-hdr-offset 0 l3-hdr-offset 14 l4-hdr-offset 34 
+    IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
+    UDP: 10.44.0.1 -> 10.44.0.2
+      tos 0x00, ttl 64, length 540, checksum 0x5294 dscp CS0 ecn NON_ECN
+      fragment id 0xd1e2, flags DONT_FRAGMENT
+    UDP: 57960 -> 5201
+      length 520, checksum 0x1674
+
+Limiting display to 50 packets. To display more specify max.

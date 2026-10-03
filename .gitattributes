@@ -1,0 +1,4 @@
+* text=auto eol=lf
+bench/results/** -whitespace
+bench/*.log -whitespace
+*.gz binary

@@ -1,0 +1,31 @@
+Thread 0 vpp_main (lcore 0)
+Time 11.4, 10 sec internal node vector rate 0.00 loops/sec 1534584.13
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+api-rx-from-ring               "any wait"                0               0               1          9.87e3            0.00
+fib-walk                       "any wait"                0               0               6          8.81e3            0.00
+ip4-full-reassembly-expire-wal "any wait"                0               0             228          5.61e3            0.00
+ip4-sv-reassembly-expire-walk  "any wait"                0               0               1          4.49e3            0.00
+ip6-full-reassembly-expire-wal "any wait"                0               0             228          4.56e3            0.00
+ip6-mld-process                "any wait"                0               0              12          4.53e3            0.00
+ip6-ra-process                 "any wait"                0               0              12          2.94e3            0.00
+ip6-sv-reassembly-expire-walk  "any wait"                0               0               1          2.90e3            0.00
+statseg-collector-process      "suspended"               0               0               1          1.00e6            0.00
+unix-cli-new-session           "any wait"                0               0              28          1.90e3            0.00
+unix-cli-process-0              "running"                9               0              18          2.84e5            0.00
+---------------
+Thread 1 vpp_wk_0 (lcore 2)
+Time 11.4, 10 sec internal node vector rate 99.59 loops/sec 333.12
+  vector rates in 1.7529e4, out 1.7529e4, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+af-packet-input               interrupt wa            2003          200002               0          1.10e5           99.85
+ethernet-input                   active                  2               2               0          3.13e3            1.00
+host-rc-a-vpp-output             active                  1               1               0          1.72e3            1.00
+host-rc-a-vpp-tx                 active                  1               1               0          2.85e4            1.00
+host-rc-b-vpp-output             active               2003          200001               0          1.25e1           99.85
+host-rc-b-vpp-tx                 active               2003          200001               0          4.51e3           99.85
+interface-output                 active               2002          200000               0          1.56e1           99.90
+l2-input                         active                  2               2               0          2.44e3            1.00
+l2-output                        active                  2               2               0          2.95e3            1.00
+rust-classify-forward            active               2002          200000               0          7.92e0           99.90
+rust-classify-node               active               2002          200001               0          5.76e1           99.90

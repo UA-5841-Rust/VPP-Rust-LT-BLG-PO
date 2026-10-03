@@ -1,0 +1,15 @@
+host-rc-a-vpp
+host-rc-b-vpp
+
+
+
+
+
+
+
+Thread 1 (vpp_wk_0):
+ node af-packet-input:
+    host-rc-a-vpp queue 0 (interrupt)
+    host-rc-b-vpp queue 0 (interrupt)
+classify: exact external frame delivery and counters passed
+passthrough: exact external frame delivery and counters passed

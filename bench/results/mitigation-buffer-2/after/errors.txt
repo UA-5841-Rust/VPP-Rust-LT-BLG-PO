@@ -1,0 +1,6 @@
+   Count                  Node                              Reason               Severity 
+   2441268         rust-classify-node                    forwarded_ok              error  
+        25          af-packet-input                    timed out block             error  
+     24191          af-packet-input                  total received block          error  
+        28             l2-output                      L2 output packets            error  
+        28              l2-input                       L2 input packets            error  

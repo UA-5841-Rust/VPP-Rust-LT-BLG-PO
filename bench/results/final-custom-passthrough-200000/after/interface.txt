@@ -1,0 +1,6 @@
+              Name               Idx    State  MTU (L3/IP4/IP6/MPLS)     Counter          Count     
+host-rc-a-vpp                     1      up          9000/0/0/0     rx packets               1999991
+                                                                    rx bytes              1107995014
+host-rc-b-vpp                     2      up          9000/0/0/0     tx packets               1999991
+                                                                    tx bytes              1107995014
+local0                            0     down          0/0/0/0       

@@ -1,0 +1,26 @@
+Thread 0 vpp_main (lcore 0)
+Time 11.5, 10 sec internal node vector rate 0.00 loops/sec 400479.69
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+api-rx-from-ring               "any wait"                0               0               1          8.34e3            0.00
+fib-walk                       "any wait"                0               0               6          7.91e3            0.00
+ip4-full-reassembly-expire-wal "any wait"                0               0             229          2.59e3            0.00
+ip4-sv-reassembly-expire-walk  "any wait"                0               0               2          4.17e3            0.00
+ip6-full-reassembly-expire-wal "any wait"                0               0             229          7.79e3            0.00
+ip6-mld-process                "any wait"                0               0              12          2.83e3            0.00
+ip6-ra-process                 "any wait"                0               0              12          4.31e3            0.00
+ip6-sv-reassembly-expire-walk  "any wait"                0               0               2          1.14e4            0.00
+statseg-collector-process      "suspended"               0               0               2          1.13e6            0.00
+unix-cli-new-session           "any wait"                0               0              29          3.49e3            0.00
+unix-cli-process-0              "running"                9               0              18          4.71e5            0.00
+---------------
+Thread 1 vpp_wk_0 (lcore 2)
+Time 11.5, 10 sec internal node vector rate 8.07 loops/sec 101.84
+  vector rates in 8.6932e2, out 8.6932e2, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+af-packet-input               interrupt wa            1242           10000               0          2.24e6            8.05
+host-rc-b-vpp-output             active               1242           10000               0          1.48e2            8.05
+host-rc-b-vpp-tx                 active               1242           10000               0          1.35e4            8.05
+interface-output                 active               1242           10000               0          1.55e2            8.05
+rust-classify-forward            active               1242           10000               0          1.19e2            8.05
+rust-classify-node               active               1242           10000               0          3.10e2            8.05

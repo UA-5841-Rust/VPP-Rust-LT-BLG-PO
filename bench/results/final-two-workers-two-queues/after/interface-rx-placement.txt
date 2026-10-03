@@ -1,0 +1,7 @@
+Thread 1 (vpp_wk_0):
+ node af-packet-input:
+    host-rc-a-vpp queue 0 (interrupt)
+    host-rc-b-vpp queue 0 (interrupt)
+Thread 2 (vpp_wk_1):
+    host-rc-a-vpp queue 1 (interrupt)
+    host-rc-b-vpp queue 1 (interrupt)

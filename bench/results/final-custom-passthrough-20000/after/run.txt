@@ -1,0 +1,25 @@
+Thread 0 vpp_main (lcore 0)
+Time 11.4, 10 sec internal node vector rate 0.00 loops/sec 1562809.13
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+fib-walk                       "any wait"                0               0               6          8.96e3            0.00
+ip4-full-reassembly-expire-wal "any wait"                0               0             228          6.21e3            0.00
+ip4-sv-reassembly-expire-walk  "any wait"                0               0               1          3.93e3            0.00
+ip6-full-reassembly-expire-wal "any wait"                0               0             228          6.48e3            0.00
+ip6-mld-process                "any wait"                0               0              12          4.52e3            0.00
+ip6-ra-process                 "any wait"                0               0              12          3.34e3            0.00
+ip6-sv-reassembly-expire-walk  "any wait"                0               0               1          8.62e3            0.00
+statseg-collector-process      "suspended"               0               0               1          1.13e6            0.00
+unix-cli-new-session           "any wait"                0               0              28          2.50e3            0.00
+unix-cli-process-0              "running"                9               0              18          2.88e5            0.00
+---------------
+Thread 1 vpp_wk_0 (lcore 2)
+Time 11.4, 10 sec internal node vector rate 99.82 loops/sec 808425.71
+  vector rates in 1.7571e4, out 1.7571e4, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+af-packet-input               interrupt wa            2001          200000               0          1.10e5           99.95
+host-rc-b-vpp-output             active               2001          200000               0          1.57e1           99.95
+host-rc-b-vpp-tx                 active               2001          200000               0          4.53e3           99.95
+interface-output                 active               2001          200000               0          1.82e1           99.95
+rust-classify-forward            active               2001          200000               0          1.08e1           99.95
+rust-classify-node               active               2001          200000               0          3.54e1           99.95
