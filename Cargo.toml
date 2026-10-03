@@ -1,0 +1,13 @@
+[package]
+name = "network_parser"
+version = "0.2.0"
+edition = "2021"
+
+[lib]
+crate-type = ["rlib", "staticlib", "cdylib"]
+
+[profile.release]
+panic = "abort"
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"

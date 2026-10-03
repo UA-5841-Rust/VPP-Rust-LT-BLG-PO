@@ -1,0 +1,2 @@
+Pool Name            Index NUMA  Size  Data Size  Total  Avail  Cached   Used  
+default-numa-0         0     0   2304     2048    16808  16168    356     284  

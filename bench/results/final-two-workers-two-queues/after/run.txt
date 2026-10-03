@@ -1,0 +1,42 @@
+Thread 0 vpp_main (lcore 0)
+Time 11.3, 10 sec internal node vector rate 0.00 loops/sec 1520446.41
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+fib-walk                       "any wait"                0               0               5          9.21e3            0.00
+ip4-full-reassembly-expire-wal "any wait"                0               0             227          4.61e3            0.00
+ip4-sv-reassembly-expire-walk  "any wait"                0               0               1          4.77e3            0.00
+ip6-full-reassembly-expire-wal "any wait"                0               0             227          8.86e3            0.00
+ip6-mld-process                "any wait"                0               0              11          2.60e3            0.00
+ip6-ra-process                 "any wait"                0               0              11          4.74e3            0.00
+ip6-sv-reassembly-expire-walk  "any wait"                0               0               1          6.55e3            0.00
+startup-config-process        "not started               1               0               0          2.06e3            0.00
+statseg-collector-process      "suspended"               0               0               1          1.54e6            0.00
+unix-cli-new-session           "any wait"                0               0              33          2.94e3            0.00
+unix-cli-process-0              "running"                9               0              18          4.06e5            0.00
+---------------
+Thread 1 vpp_wk_0 (lcore 2)
+Time 11.3, 10 sec internal node vector rate 100.97 loops/sec 740087.89
+  vector rates in 8.8206e4, out 8.8206e4, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+af-packet-input               interrupt wa            9892          999065               0          1.77e4          101.00
+host-rc-b-vpp-output             active               9890          999065               0          1.03e1          101.02
+host-rc-b-vpp-tx                 active               9890          999065               0          5.13e3          101.02
+interface-output                 active               9890          999065               0          1.36e1          101.02
+rust-classify-forward            active               9890          999065               0          7.19e0          101.02
+rust-classify-node               active               9890          999065               0          4.86e1          101.02
+---------------
+Thread 2 vpp_wk_1 (lcore 4)
+Time 11.3, 10 sec internal node vector rate 100.97 loops/sec 936873.88
+  vector rates in 8.8207e4, out 8.8207e4, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+af-packet-input               interrupt wa            9897          999067               0          1.68e4          100.95
+ethernet-input                   active                  2               2               0          1.28e4            1.00
+host-rc-a-vpp-output             active                  1               1               0          3.40e3            1.00
+host-rc-a-vpp-tx                 active                  1               1               0          2.68e5            1.00
+host-rc-b-vpp-output             active               9892          999066               0          1.01e1          101.00
+host-rc-b-vpp-tx                 active               9892          999066               0          6.04e3          101.00
+interface-output                 active               9891          999065               0          1.32e1          101.01
+l2-input                         active                  2               2               0          3.92e3            1.00
+l2-output                        active                  2               2               0          5.33e3            1.00
+rust-classify-forward            active               9891          999065               0          7.50e0          101.01
+rust-classify-node               active               9892          999066               0          4.70e1          101.00

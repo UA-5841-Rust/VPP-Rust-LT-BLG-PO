@@ -1,0 +1,30 @@
+Thread 0 vpp_main (lcore 0)
+Time 10.6, 10 sec internal node vector rate 0.00 loops/sec 3418441.02
+  vector rates in 0.0000e0, out 0.0000e0, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+fib-walk                       "any wait"                0               0               5          9.83e3            0.00
+ip4-full-reassembly-expire-wal "any wait"                0               0             211          4.40e3            0.00
+ip4-sv-reassembly-expire-walk  "any wait"                0               0               1          3.61e3            0.00
+ip6-full-reassembly-expire-wal "any wait"                0               0             211          8.23e3            0.00
+ip6-mld-process                "any wait"                0               0              11          2.86e3            0.00
+ip6-ra-process                 "any wait"                0               0              11          3.88e3            0.00
+ip6-sv-reassembly-expire-walk  "any wait"                0               0               1          9.23e3            0.00
+statseg-collector-process      "suspended"               0               0               1          1.07e6            0.00
+unix-cli-new-session           "any wait"                0               0              23          2.45e3            0.00
+unix-cli-process-0              "running"                9               0              18          2.99e5            0.00
+---------------
+Thread 1 vpp_wk_0 (lcore 2)
+Time 10.6, 10 sec internal node vector rate 101.08 loops/sec 42704.13
+  vector rates in 2.3109e5, out 2.3109e5, drop 0.0000e0, punt 0.0000e0
+             Name                 State         Calls          Vectors        Suspends         Clocks       Vectors/Call  
+af-packet-input               interrupt wa           24343         2441264               0          5.72e3          100.29
+ethernet-input                   active                 14              27               0          3.88e3            1.93
+host-rc-a-vpp-output             active                  7              14               0          1.17e3            2.00
+host-rc-a-vpp-tx                 active                  7              14               0          4.41e4            2.00
+host-rc-b-vpp-output             active              24143         2441250               0          8.25e0          101.12
+host-rc-b-vpp-tx                 active              24143         2441250               0          3.71e3          101.12
+interface-output                 active              24137         2441237               0          1.10e1          101.14
+l2-input                         active                 14              27               0          1.60e3            1.93
+l2-output                        active                 14              27               0          1.31e3            1.93
+rust-classify-forward            active              24137         2441237               0          5.83e0          101.14
+rust-classify-node               active              24142         2441250               0          4.32e1          101.12

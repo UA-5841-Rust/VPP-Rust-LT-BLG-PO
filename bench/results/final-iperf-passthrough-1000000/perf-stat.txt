@@ -1,0 +1,7 @@
+# started on Sat Oct  3 17:21:04 2026
+
+2432;;context-switches;328222684;100.00;7.410;K/sec
+0;;cpu-migrations;328222684;100.00;0.000;/sec
+328.22;msec;task-clock;328222684;100.00;0.033;CPUs utilized
+1182310515;;cycles;328222684;100.00;3.602;GHz
+1850933699;;instructions;328222684;100.00;1.57;insn per cycle

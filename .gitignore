@@ -19,3 +19,14 @@ target
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+bench/build/
+bench/runtime/
+bench/*diagnostic.log
+bench/console.log
+bench/results/**/perf.data*
+bench/results/**/perf-script.txt
+__pycache__/
+.venv/
+bench/superseded/
+bench/diff-check.log

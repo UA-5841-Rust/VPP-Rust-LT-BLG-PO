@@ -1,0 +1,118 @@
+Name:	vpp_main
+Umask:	0022
+State:	S (sleeping)
+Tgid:	915
+Ngid:	0
+Pid:	915
+PPid:	610
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+NStgid:	915
+NSpid:	915
+NSpgid:	611
+NSsid:	611
+Kthread:	0
+VmPeak:	18140888 kB
+VmSize:	18140888 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	  362256 kB
+VmRSS:	  362256 kB
+RssAnon:	  173952 kB
+RssFile:	  187664 kB
+RssShmem:	     640 kB
+VmData:	 1055644 kB
+VmStk:	     132 kB
+VmExe:	      60 kB
+VmLib:	   46720 kB
+VmPTE:	     844 kB
+VmSwap:	       0 kB
+HugetlbPages:	   38912 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	2
+SigQ:	1/31129
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000011000
+SigCgt:	000000017bf8e4ff
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	thread vulnerable
+SpeculationIndirectBranch:	conditional enabled
+Cpus_allowed:	0001
+Cpus_allowed_list:	0
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	13356
+nonvoluntary_ctxt_switches:	30
+Name:	vpp_wk_0
+Umask:	0022
+State:	R (running)
+Tgid:	915
+Ngid:	0
+Pid:	922
+PPid:	610
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+NStgid:	915
+NSpid:	922
+NSpgid:	611
+NSsid:	611
+Kthread:	0
+VmPeak:	18140888 kB
+VmSize:	18140888 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	  362256 kB
+VmRSS:	  362256 kB
+RssAnon:	  173952 kB
+RssFile:	  187664 kB
+RssShmem:	     640 kB
+VmData:	 1055644 kB
+VmStk:	     132 kB
+VmExe:	      60 kB
+VmLib:	   46720 kB
+VmPTE:	     844 kB
+VmSwap:	       0 kB
+HugetlbPages:	   38912 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	2
+SigQ:	1/31129
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000004003
+SigIgn:	0000000000011000
+SigCgt:	000000017bf8e4ff
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	thread vulnerable
+SpeculationIndirectBranch:	conditional enabled
+Cpus_allowed:	0004
+Cpus_allowed_list:	2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	47785
+nonvoluntary_ctxt_switches:	988

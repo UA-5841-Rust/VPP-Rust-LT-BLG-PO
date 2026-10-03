@@ -1,0 +1,8 @@
+{
+  "offered_pps": 244.1903788990714,
+  "offered_payload_bps": 1000203.7919705964,
+  "sent_packets": 2442,
+  "received_packets": 2441,
+  "loss_percent": 0,
+  "jitter_ms": 3.95481298606769
+}

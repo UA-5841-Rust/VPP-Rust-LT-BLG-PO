@@ -1,0 +1,64 @@
+              Name                Idx   Link  Hardware
+host-rc-a-vpp                      1     up   host-rc-a-vpp
+  Link speed: unknown
+  RX Queues:
+    queue thread         mode      
+    0     vpp_wk_0 (1)   interrupt 
+  TX Queues:
+    TX Hash: [name: hash-eth-l34 priority: 50 description: Hash ethernet L34 headers]
+    queue shared thread(s)      
+    0     yes    0-1
+  Ethernet address 02:fe:42:75:76:fd
+  Linux PACKET socket interface v3
+  FEATURES:
+    qdisc-bpass-enabled
+    cksum-gso-enabled
+  Host Interface Offload:
+    creation time:
+     rx checksum
+     tx checksum
+     tcp segmentation offload
+     generic segmentation offload
+    now:
+     rx checksum
+     tx checksum
+     tcp segmentation offload
+     generic segmentation offload
+  RX Queue 0:
+    block size:65536 nr:160  frame size:2048 nr:5120 next block:13
+  TX Queue 0:
+    block size:69206016 nr:1  frame size:67584 nr:1024 next frame:5
+    available:1024 request:0 sending:0 wrong:0 total:1024
+host-rc-b-vpp                      2     up   host-rc-b-vpp
+  Link speed: unknown
+  RX Queues:
+    queue thread         mode      
+    0     vpp_wk_0 (1)   interrupt 
+  TX Queues:
+    TX Hash: [name: hash-eth-l34 priority: 50 description: Hash ethernet L34 headers]
+    queue shared thread(s)      
+    0     yes    0-1
+  Ethernet address 02:fe:ff:a4:7a:4a
+  Linux PACKET socket interface v3
+  FEATURES:
+    qdisc-bpass-enabled
+    cksum-gso-enabled
+  Host Interface Offload:
+    creation time:
+     rx checksum
+     tx checksum
+     tcp segmentation offload
+     generic segmentation offload
+    now:
+     rx checksum
+     tx checksum
+     tcp segmentation offload
+     generic segmentation offload
+  RX Queue 0:
+    block size:65536 nr:160  frame size:2048 nr:5120 next block:5
+  TX Queue 0:
+    block size:69206016 nr:1  frame size:67584 nr:1024 next frame:9
+    available:1024 request:0 sending:0 wrong:0 total:1024
+local0                             0    down  local0
+  Link speed: unknown
+  local

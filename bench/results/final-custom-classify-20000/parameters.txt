@@ -1,0 +1,1 @@
+tool=custom mode=classify requested_rate=20000 duration=10

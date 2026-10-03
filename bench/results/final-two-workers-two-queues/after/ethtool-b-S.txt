@@ -1,0 +1,11 @@
+NIC statistics:
+     peer_ifindex: 29
+     rx_queue_0_xdp_packets: 0
+     rx_queue_0_xdp_bytes: 0
+     rx_queue_0_drops: 0
+     rx_queue_0_xdp_redirect: 0
+     rx_queue_0_xdp_drops: 0
+     rx_queue_0_xdp_tx: 0
+     rx_queue_0_xdp_tx_errors: 0
+     tx_queue_0_xdp_xmit: 0
+     tx_queue_0_xdp_xmit_errors: 0
