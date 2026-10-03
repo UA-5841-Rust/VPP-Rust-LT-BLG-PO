@@ -53,12 +53,15 @@ disabled; diagnostic tracing/formatting and VPP framework buffer management are
 not claimed allocation-free. Never measure normal hot-path performance with
 trace enabled. No additional allocation is introduced for packet parsing.
 
-The feature intentionally consumes the packet path: successful frames go to
-`rust-classify-forward`, not the next feature on the input arc. That node swaps
-six-byte Ethernet addresses and sends the packet to `interface-output` using
-the ingress interface as TX. This is an Ethernet echo demonstration, not an IP
-router or an application-layer UDP echo server. IP addresses and ports are
-unchanged. Enable it only on the test interface.
+In bench mode (`to <egress>`), accepted frames go to `rust-classify-forward`
+and then `interface-output` on the configured egress without rewriting bytes.
+ARP, TCP and ICMP control traffic continues along the normal feature arc and
+L2 cross-connect. Passthrough skips the Rust call; chained buffers remain
+unsupported and the forwarding node retains its Ethernet length guard.
+The passthrough trace's validity field is synthetic, not a parsing result.
+Without an explicit egress, the original Ethernet echo swaps MAC addresses and
+returns accepted frames to ingress. Neither mode is an IP router or a UDP echo
+application; IP addresses, UDP ports and payload remain unchanged.
 
 ## Unsafe inventory
 
@@ -68,8 +71,8 @@ unchanged. Enable it only on the test interface.
 - `tests/classify.rs`: FFI calls with live slices or documented rejected sentinels.
 - `tests/no_alloc.rs`: `GlobalAlloc` forwards allocation/deallocation to `System`
   without changing layouts; the test calls FFI with a bounded stack buffer.
-- `tests/ffi_smoke.c` and `scripts/check_fixtures.py`: foreign callers keep their
-  stack/ctypes allocations live through every call.
+- `tests/ffi_smoke.c`: the foreign caller keeps its stack allocation live
+  through every call.
 
 The exported function does not catch panics. Its checked parsing path has no
 intentional panic; release uses `panic=abort`, so an unexpected Rust bug would

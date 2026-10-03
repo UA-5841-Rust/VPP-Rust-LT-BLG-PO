@@ -3,19 +3,19 @@ No packets in trace buffer
 ------------------- Start of thread 1 vpp_wk_0 -------------------
 Packet 1
 
-00:00:02:866700: af-packet-input
+00:00:02:803387: af-packet-input
   af_packet: hw_if_index 1 rx-queue 0 next-index 11
     block 7:
-      address 0x749dfe86f000 version 2 seq_num 8 pkt_num 0
+      address 0x7beaea46f000 version 2 seq_num 8 pkt_num 0
     tpacket3_hdr:
       status 0x1 len 110 snaplen 110 mac 92 net 106
-      sec 0x6ac13d0d nsec 0x82a52ee vlan 0 vlan_tpid 0
+      sec 0x6ac13fbe nsec 0x3038df70 vlan 0 vlan_tpid 0
     vnet-hdr:
       flags 0x00 gso_type 0x00 hdr_len 0
       gso_size 0 csum_start 0 csum_offset 0
-00:00:02:866713: rust-classify-node
+00:00:02:803400: rust-classify-node
   rust-classify: protocol 1 port 0 valid 1 error 0 next 1 rx 1 chained 0 passthrough 1 tx 2
-00:00:02:866719: host-rc-b-vpp-output
+00:00:02:803406: host-rc-b-vpp-output
   host-rc-b-vpp flags 0x00000005
   IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
   UDP: 10.44.0.1 -> 10.44.0.2
@@ -23,7 +23,7 @@ Packet 1
     fragment id 0x0001
   UDP: 4320 -> 4321
     length 76, checksum 0x0000
-00:00:02:866721: host-rc-b-vpp-tx
+00:00:02:803408: host-rc-b-vpp-tx
   af_packet: hw_if_index 2 tx-queue 0
     tpacket3_hdr:
       status 0x1 len 120 snaplen 120 mac 0 net 0
@@ -42,30 +42,30 @@ Packet 1
 
 Packet 2
 
-00:00:02:870692: af-packet-input
+00:00:02:811310: af-packet-input
   af_packet: hw_if_index 2 rx-queue 0 next-index 4
     block 3:
-      address 0x749df9c2f000 version 2 seq_num 4 pkt_num 0
+      address 0x7beae582f000 version 2 seq_num 4 pkt_num 0
     tpacket3_hdr:
       status 0x1 len 138 snaplen 138 mac 92 net 106
-      sec 0x6ac13d0d nsec 0x88c2d6c vlan 0 vlan_tpid 0
+      sec 0x6ac13fbe nsec 0x3071a330 vlan 0 vlan_tpid 0
     vnet-hdr:
       flags 0x00 gso_type 0x00 hdr_len 0
       gso_size 0 csum_start 0 csum_offset 0
-00:00:02:870697: ethernet-input
+00:00:02:811312: ethernet-input
   IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
-00:00:02:870700: l2-input
+00:00:02:811315: l2-input
   l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
-00:00:02:870702: l2-output
-  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 c0 00 7c c9 c9 00 00 40 01
-00:00:02:870703: host-rc-a-vpp-output
+00:00:02:811317: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 c0 00 7c 18 6d 00 00 40 01
+00:00:02:811318: host-rc-a-vpp-output
   host-rc-a-vpp flags 0x00180005
   IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
   ICMP: 10.44.0.2 -> 10.44.0.1
-    tos 0xc0, ttl 64, length 124, checksum 0x9b9d dscp CS6 ecn NON_ECN
-    fragment id 0xc9c9
+    tos 0xc0, ttl 64, length 124, checksum 0x4cfa dscp CS6 ecn NON_ECN
+    fragment id 0x186d
   ICMP destination_unreachable port_unreachable checksum 0x6b80
-00:00:02:870705: host-rc-a-vpp-tx
+00:00:02:811318: host-rc-a-vpp-tx
   af_packet: hw_if_index 1 tx-queue 0
     tpacket3_hdr:
       status 0x1 len 148 snaplen 148 mac 0 net 0
@@ -78,25 +78,25 @@ Packet 2
       l2-hdr-offset 0 l3-hdr-offset 14 
     IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
     ICMP: 10.44.0.2 -> 10.44.0.1
-      tos 0xc0, ttl 64, length 124, checksum 0x9b9d dscp CS6 ecn NON_ECN
-      fragment id 0xc9c9
+      tos 0xc0, ttl 64, length 124, checksum 0x4cfa dscp CS6 ecn NON_ECN
+      fragment id 0x186d
     ICMP destination_unreachable port_unreachable checksum 0x6b80
 
 Packet 3
 
-00:00:02:914366: af-packet-input
+00:00:02:851069: af-packet-input
   af_packet: hw_if_index 1 rx-queue 0 next-index 11
     block 8:
-      address 0x749dfe87f000 version 2 seq_num 9 pkt_num 0
+      address 0x7beaea47f000 version 2 seq_num 9 pkt_num 0
     tpacket3_hdr:
       status 0x1 len 114 snaplen 114 mac 92 net 106
-      sec 0x6ac13d0d nsec 0xb26a183 vlan 0 vlan_tpid 0
+      sec 0x6ac13fbe nsec 0x33364341 vlan 0 vlan_tpid 0
     vnet-hdr:
       flags 0x00 gso_type 0x00 hdr_len 0
       gso_size 0 csum_start 0 csum_offset 0
-00:00:02:914377: rust-classify-node
+00:00:02:851078: rust-classify-node
   rust-classify: protocol 1 port 0 valid 1 error 0 next 1 rx 1 chained 0 passthrough 1 tx 2
-00:00:02:914381: host-rc-b-vpp-output
+00:00:02:851081: host-rc-b-vpp-output
   host-rc-b-vpp flags 0x00000005
   IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
   UDP: 10.44.0.1 -> 10.44.0.2
@@ -105,7 +105,7 @@ Packet 3
     fragment id 0x0001
   UDP: 4320 -> 4321
     length 76, checksum 0x0000
-00:00:02:914383: host-rc-b-vpp-tx
+00:00:02:851083: host-rc-b-vpp-tx
   af_packet: hw_if_index 2 tx-queue 0
     tpacket3_hdr:
       status 0x1 len 124 snaplen 124 mac 0 net 0
@@ -125,30 +125,30 @@ Packet 3
 
 Packet 4
 
-00:00:02:918275: af-packet-input
+00:00:02:859017: af-packet-input
   af_packet: hw_if_index 2 rx-queue 0 next-index 4
     block 4:
-      address 0x749df9c3f000 version 2 seq_num 5 pkt_num 0
+      address 0x7beae583f000 version 2 seq_num 5 pkt_num 0
     tpacket3_hdr:
       status 0x1 len 142 snaplen 142 mac 92 net 106
-      sec 0x6ac13d0d nsec 0xb690df6 vlan 0 vlan_tpid 0
+      sec 0x6ac13fbe nsec 0x334da080 vlan 0 vlan_tpid 0
     vnet-hdr:
       flags 0x00 gso_type 0x00 hdr_len 0
       gso_size 0 csum_start 0 csum_offset 0
-00:00:02:918277: ethernet-input
+00:00:02:859022: ethernet-input
   IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
-00:00:02:918280: l2-input
+00:00:02:859025: l2-input
   l2-input: sw_if_index 2 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 [l2-output ]
-00:00:02:918282: l2-output
-  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 c0 00 80 c9 ca 00 00 40 01
-00:00:02:918283: host-rc-a-vpp-output
+00:00:02:859026: l2-output
+  l2-output: sw_if_index 1 dst 72:b8:43:77:d5:29 src 62:a3:42:6d:44:75 data 08 00 45 c0 00 80 18 78 00 00 40 01
+00:00:02:859027: host-rc-a-vpp-output
   host-rc-a-vpp flags 0x00180005
   IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
   ICMP: 10.44.0.2 -> 10.44.0.1
-    tos 0xc0, ttl 64, length 128, checksum 0x9b98 dscp CS6 ecn NON_ECN
-    fragment id 0xc9ca
+    tos 0xc0, ttl 64, length 128, checksum 0x4ceb dscp CS6 ecn NON_ECN
+    fragment id 0x1878
   ICMP destination_unreachable port_unreachable checksum 0x6b80
-00:00:02:918283: host-rc-a-vpp-tx
+00:00:02:859029: host-rc-a-vpp-tx
   af_packet: hw_if_index 1 tx-queue 0
     tpacket3_hdr:
       status 0x1 len 152 snaplen 152 mac 0 net 0
@@ -161,28 +161,28 @@ Packet 4
       l2-hdr-offset 0 l3-hdr-offset 14 
     IP4: 62:a3:42:6d:44:75 -> 72:b8:43:77:d5:29
     ICMP: 10.44.0.2 -> 10.44.0.1
-      tos 0xc0, ttl 64, length 128, checksum 0x9b98 dscp CS6 ecn NON_ECN
-      fragment id 0xc9ca
+      tos 0xc0, ttl 64, length 128, checksum 0x4ceb dscp CS6 ecn NON_ECN
+      fragment id 0x1878
     ICMP destination_unreachable port_unreachable checksum 0x6b80
 
 Packet 5
 
-00:00:02:961945: af-packet-input
+00:00:02:906721: af-packet-input
   af_packet: hw_if_index 1 rx-queue 0 next-index 11
     block 9:
-      address 0x749dfe88f000 version 2 seq_num 10 pkt_num 0
+      address 0x7beaea48f000 version 2 seq_num 10 pkt_num 0
     tpacket3_hdr:
       status 0x1 len 110 snaplen 110 mac 92 net 106
-      sec 0x6ac13d0d nsec 0xe26c26b vlan 0 vlan_tpid 0
+      sec 0x6ac13fbe nsec 0x363396bc vlan 0 vlan_tpid 0
     vnet-hdr:
       flags 0x00 gso_type 0x00 hdr_len 0
       gso_size 0 csum_start 0 csum_offset 0
-00:00:02:961952: rust-classify-node
+00:00:02:906728: rust-classify-node
   rust-classify: protocol 1 port 0 valid 1 error 0 next 1 rx 1 chained 0 passthrough 1 tx 2
-00:00:02:961956: host-rc-b-vpp-output
+00:00:02:906732: host-rc-b-vpp-output
   host-rc-b-vpp flags 0x00000005
   0x88b5: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
-00:00:02:961957: host-rc-b-vpp-tx
+00:00:02:906733: host-rc-b-vpp-tx
   af_packet: hw_if_index 2 tx-queue 0
     tpacket3_hdr:
       status 0x1 len 120 snaplen 120 mac 0 net 0
@@ -196,19 +196,19 @@ Packet 5
 
 Packet 6
 
-00:00:03:017429: af-packet-input
+00:00:02:954366: af-packet-input
   af_packet: hw_if_index 1 rx-queue 0 next-index 11
     block 10:
-      address 0x749dfe89f000 version 2 seq_num 11 pkt_num 0
+      address 0x7beaea49f000 version 2 seq_num 11 pkt_num 0
     tpacket3_hdr:
       status 0x1 len 110 snaplen 110 mac 92 net 106
-      sec 0x6ac13d0d nsec 0x112452fb vlan 0 vlan_tpid 0
+      sec 0x6ac13fbe nsec 0x392ff72c vlan 0 vlan_tpid 0
     vnet-hdr:
       flags 0x00 gso_type 0x00 hdr_len 0
       gso_size 0 csum_start 0 csum_offset 0
-00:00:03:017434: rust-classify-node
+00:00:02:954372: rust-classify-node
   rust-classify: protocol 1 port 0 valid 1 error 0 next 1 rx 1 chained 0 passthrough 1 tx 2
-00:00:03:017437: host-rc-b-vpp-output
+00:00:02:954375: host-rc-b-vpp-output
   host-rc-b-vpp flags 0x00000005
   IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
   UDP: 10.44.0.1 -> 10.44.0.2
@@ -216,7 +216,7 @@ Packet 6
     fragment id 0x0001, flags MORE_FRAGMENTS
   UDP: 4320 -> 4321
     length 76, checksum 0x0000
-00:00:03:017438: host-rc-b-vpp-tx
+00:00:02:954376: host-rc-b-vpp-tx
   af_packet: hw_if_index 2 tx-queue 0
     tpacket3_hdr:
       status 0x1 len 120 snaplen 120 mac 0 net 0
@@ -235,19 +235,19 @@ Packet 6
 
 Packet 7
 
-00:00:03:058301: af-packet-input
+00:00:02:993185: af-packet-input
   af_packet: hw_if_index 1 rx-queue 0 next-index 11
     block 11:
-      address 0x749dfe8af000 version 2 seq_num 12 pkt_num 0
+      address 0x7beaea4af000 version 2 seq_num 12 pkt_num 0
     tpacket3_hdr:
       status 0x1 len 109 snaplen 109 mac 92 net 106
-      sec 0x6ac13d0d nsec 0x14229fda vlan 0 vlan_tpid 0
+      sec 0x6ac13fbf nsec 0x9380be vlan 0 vlan_tpid 0
     vnet-hdr:
       flags 0x00 gso_type 0x00 hdr_len 0
       gso_size 0 csum_start 0 csum_offset 0
-00:00:03:065055: rust-classify-node
+00:00:03:002221: rust-classify-node
   rust-classify: protocol 1 port 0 valid 1 error 0 next 1 rx 1 chained 0 passthrough 1 tx 2
-00:00:03:065063: host-rc-b-vpp-output
+00:00:03:002228: host-rc-b-vpp-output
   host-rc-b-vpp flags 0x00000005
   IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
   UDP: 10.44.0.1 -> 10.44.0.2
@@ -255,7 +255,7 @@ Packet 7
     fragment id 0x0001
   UDP: 4320 -> 4321
     length 76, checksum 0x0000
-00:00:03:065064: host-rc-b-vpp-tx
+00:00:03:002230: host-rc-b-vpp-tx
   af_packet: hw_if_index 2 tx-queue 0
     tpacket3_hdr:
       status 0x1 len 119 snaplen 119 mac 0 net 0
@@ -274,19 +274,19 @@ Packet 7
 
 Packet 8
 
-00:00:03:105316: af-packet-input
+00:00:03:042569: af-packet-input
   af_packet: hw_if_index 1 rx-queue 0 next-index 11
     block 12:
-      address 0x749dfe8bf000 version 2 seq_num 13 pkt_num 0
+      address 0x7beaea4bf000 version 2 seq_num 13 pkt_num 0
     tpacket3_hdr:
       status 0x1 len 110 snaplen 110 mac 92 net 106
-      sec 0x6ac13d0d nsec 0x172102ed vlan 0 vlan_tpid 0
+      sec 0x6ac13fbf nsec 0x3953afd vlan 0 vlan_tpid 0
     vnet-hdr:
       flags 0x00 gso_type 0x00 hdr_len 0
       gso_size 0 csum_start 0 csum_offset 0
-00:00:03:112677: rust-classify-node
+00:00:03:049959: rust-classify-node
   rust-classify: protocol 1 port 0 valid 1 error 0 next 1 rx 1 chained 0 passthrough 1 tx 2
-00:00:03:112682: host-rc-b-vpp-output
+00:00:03:049972: host-rc-b-vpp-output
   host-rc-b-vpp flags 0x00000005
   IP4: 72:b8:43:77:d5:29 -> 62:a3:42:6d:44:75
   UDP: 10.44.0.1 -> 10.44.0.2
@@ -294,7 +294,7 @@ Packet 8
     fragment id 0x0001
   UDP: 4320 -> 4321
     length 7, checksum 0x0000
-00:00:03:112684: host-rc-b-vpp-tx
+00:00:03:049975: host-rc-b-vpp-tx
   af_packet: hw_if_index 2 tx-queue 0
     tpacket3_hdr:
       status 0x1 len 120 snaplen 120 mac 0 net 0

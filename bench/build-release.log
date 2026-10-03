@@ -1,14 +1,14 @@
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.13s
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.14s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
      Running unittests src/lib.rs (target/debug/deps/network_parser-7ec936be1c14a7db)
 
 running 6 tests
 test ethernet::tests::rejects_short_ethernet_header ... ok
-test ethernet::tests::parses_ethernet_header ... ok
 test udp::tests::parses_empty_payload ... ok
+test udp::tests::rejects_inconsistent_length ... ok
+test ethernet::tests::parses_ethernet_header ... ok
 test ipv4::tests::parses_options_without_copying ... ok
 test ipv4::tests::rejects_a_total_length_smaller_than_the_header ... ok
-test udp::tests::rejects_inconsistent_length ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -23,7 +23,7 @@ test result_layout_matches_c_header ... ok
 test returns_udp_fields_and_matches_safe_parser ... ok
 test arbitrary_bytes_never_panic_and_ffi_matches_safe_entry ... ok
 
-test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
      Running tests/no_alloc.rs (target/debug/deps/no_alloc-dad0cb81e7ce6231)
 
@@ -35,21 +35,21 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/parser.rs (target/debug/deps/parser-d6f8715b6b3c6fe7)
 
 running 14 tests
+test parses_ipv4_options_without_copying ... ok
 test rejects_a_non_udp_ipv4_packet ... ok
 test parses_an_empty_udp_payload ... ok
+test rejects_a_truncated_udp_payload ... ok
 test malformed_prefixes_never_panic ... ok
 test parses_a_complete_ethernet_ipv4_udp_packet ... ok
-test parses_ipv4_options_without_copying ... ok
-test rejects_a_truncated_ipv4_packet ... ok
 test rejects_a_short_packet ... ok
-test rejects_a_truncated_udp_payload ... ok
+test rejects_a_truncated_ipv4_packet ... ok
 test rejects_an_invalid_ethertype ... ok
-test rejects_an_invalid_ipv4_header_length ... ok
-test rejects_an_invalid_ipv4_total_length ... ok
 test rejects_an_invalid_ipv4_version ... ok
+test rejects_an_invalid_ipv4_total_length ... ok
+test rejects_an_invalid_ipv4_header_length ... ok
 test rejects_an_invalid_udp_length ... ok
 test udp_payload_borrows_the_original_buffer ... ok
 
-test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
-    Finished `release` profile [optimized] target(s) in 0.05s
+    Finished `release` profile [optimized] target(s) in 0.06s

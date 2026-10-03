@@ -22,11 +22,8 @@ target
 
 bench/build/
 bench/runtime/
-bench/*diagnostic.log
 bench/console.log
 bench/results/**/perf.data*
 bench/results/**/perf-script.txt
 __pycache__/
 .venv/
-bench/superseded/
-bench/diff-check.log

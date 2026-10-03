@@ -87,12 +87,10 @@ def main():
         assert process.wait(timeout=5) == 0
         received = json.loads(capture.read_text())
         expected = packets[:2] if mode == "classify" else packets
-        (args.output / f"{mode}-trace.txt").write_text(cli("show trace"))
-        (args.output / f"{mode}-errors.txt").write_text(cli("show errors"))
-        assert collections.Counter(received) == collections.Counter(p.hex() for p in expected), mode
         errors = cli("show errors")
         (args.output / f"{mode}-errors.txt").write_text(errors)
         (args.output / f"{mode}-trace.txt").write_text(cli("show trace"))
+        assert collections.Counter(received) == collections.Counter(p.hex() for p in expected), mode
         counts = {}
         for line in errors.splitlines():
             fields = line.split()

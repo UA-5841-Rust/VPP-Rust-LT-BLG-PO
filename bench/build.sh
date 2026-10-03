@@ -4,11 +4,12 @@ cd "$(dirname "$0")/.."
 vpp=${VPP_DIR:-/home/user/vpp}
 profile=${1:-release}
 [[ $profile == release || $profile == debug ]] || { echo 'Expected release or debug' >&2; exit 2; }
-suffix=native
 opt=-O3
-if [[ $profile == debug ]]; then suffix=debug-native; opt=-O0; fi
-build="$vpp/build-root/build-vpp-$suffix/vpp"
-[[ $profile == debug ]] && build="$vpp/build-root/build-vpp_debug-native/vpp"
+build="$vpp/build-root/build-vpp-native/vpp"
+if [[ $profile == debug ]]; then
+  build="$vpp/build-root/build-vpp_debug-native/vpp"
+  opt=-O0
+fi
 mkdir -p "bench/build/$profile"
 cargo fmt --check
 cargo clippy --all-targets -- -D warnings

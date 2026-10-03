@@ -25,7 +25,6 @@ def main():
         if "end" in client:
             receiver = client["end"]["sum_received"]
             summary["received_packets"] = receiver["packets"] - receiver["lost_packets"]
-            (path / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
         clocks = []
         vectors = []
         for line in (path / "after/run.txt").read_text().splitlines():
@@ -61,6 +60,8 @@ def main():
                    sink_rcvbuf_errors=after_udp["RcvbufErrors"] - before_udp["RcvbufErrors"]
                    if after_udp and before_udp else "N/A")
         rows.append(row)
+    if not rows:
+        raise SystemExit("No completed load runs found under bench/results")
     with (root / "measurements.csv").open("w", newline="") as output:
         writer = csv.DictWriter(output, fieldnames=list(rows[0]))
         writer.writeheader()

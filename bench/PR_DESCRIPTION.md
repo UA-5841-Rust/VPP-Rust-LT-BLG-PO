@@ -67,6 +67,3 @@ TX queue; main matrix has one observation per point. CPU affinity does not
 provide exclusive host-core isolation. NIC/NUMA experiments are constrained by
 the available topology; no hardware timestamps or RTT claims. The measured
 passthrough difference includes parsing and dispatch, not ABI overhead alone.
-
-No push or PR creation was performed; this text is ready for the final user push
-and PR against `main`.

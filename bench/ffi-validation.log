@@ -3,12 +3,12 @@
      Running unittests src/lib.rs (target/debug/deps/network_parser-7ec936be1c14a7db)
 
 running 6 tests
-test ethernet::tests::parses_ethernet_header ... ok
 test ethernet::tests::rejects_short_ethernet_header ... ok
+test ipv4::tests::rejects_a_total_length_smaller_than_the_header ... ok
+test ethernet::tests::parses_ethernet_header ... ok
 test ipv4::tests::parses_options_without_copying ... ok
 test udp::tests::parses_empty_payload ... ok
 test udp::tests::rejects_inconsistent_length ... ok
-test ipv4::tests::rejects_a_total_length_smaller_than_the_header ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -35,11 +35,11 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/parser.rs (target/debug/deps/parser-d6f8715b6b3c6fe7)
 
 running 14 tests
+test rejects_a_short_packet ... ok
 test parses_an_empty_udp_payload ... ok
+test rejects_a_non_udp_ipv4_packet ... ok
 test parses_ipv4_options_without_copying ... ok
 test parses_a_complete_ethernet_ipv4_udp_packet ... ok
-test rejects_a_short_packet ... ok
-test rejects_a_non_udp_ipv4_packet ... ok
 test malformed_prefixes_never_panic ... ok
 test rejects_a_truncated_ipv4_packet ... ok
 test rejects_a_truncated_udp_payload ... ok
@@ -52,4 +52,6 @@ test udp_payload_borrows_the_original_buffer ... ok
 
 test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
-    Finished `release` profile [optimized] target(s) in 0.05s
+   Compiling network_parser v0.2.0 (/mnt/c/Users/user/Desktop/RUST/week4/VPP-Rust-LT-BLG-PO)
+    Finished `release` profile [optimized] target(s) in 1.04s
+C/Rust ABI smoke test passed

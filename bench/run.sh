@@ -56,11 +56,11 @@ else
   kill "$server"
   wait "$server"
 fi
-wait "$stat" || true
+wait "$stat"
 if [[ ${PROFILE:-0} == 1 ]]; then
-  wait "$record" || true
-  "$PERF" report -f --stdio -i "$out/perf.data" > "$out/perf-report.txt" 2>&1 || true
-  "$PERF" script -f -i "$out/perf.data" > "$out/perf-script.txt" 2> "$out/perf-script-errors.txt" || true
+  wait "$record"
+  "$PERF" report -f --stdio -i "$out/perf.data" > "$out/perf-report.txt" 2>&1
+  "$PERF" script -f -i "$out/perf.data" > "$out/perf-script.txt" 2> "$out/perf-script-errors.txt"
   if [[ -s "$out/perf-script.txt" ]]; then
     python3 "$BENCH/flamegraph.py" "$out/perf-script.txt" "$out/flamegraph.svg"
   fi

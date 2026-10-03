@@ -45,9 +45,10 @@ EOF
 echo $! > "$RUN/vpp.pid"
 for _ in {1..100}; do
   [[ -S "$RUN/cli.sock" ]] && break
-  kill -0 "$(cat "$RUN/vpp.pid")" || { cat "$RUN/console.log"; exit 1; }
+  kill -0 "$(cat "$RUN/vpp.pid")" || { cat "$BENCH/console.log"; exit 1; }
   sleep .1
 done
+[[ -S "$RUN/cli.sock" ]] || { echo 'VPP CLI startup timed out' >&2; exit 1; }
 if [[ $pin == unpinned ]]; then
   for thread in /proc/"$(cat "$RUN/vpp.pid")"/task/*; do
     taskset -pc "$(awk '/Cpus_allowed_list/ {print $2}' /proc/self/status)" "${thread##*/}" >/dev/null
